@@ -1,7 +1,7 @@
 {
   "name": "Espace Parent - hybrilink",
   "short_name": "Hybrilink_teck",
-  "description": "Hybrilink Application de suivi scolaire pour les parents",
+  "description": "Hybrilink Application  scolaire pour le secretaire",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#3392d1",
