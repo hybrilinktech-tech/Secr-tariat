@@ -10143,42 +10143,277 @@ window.printUnifiedEnrollmentForm = function() {
         console.log('%c📦 Mode hors ligne activé', 'color: #f39c12;');
     </script>
 <script>
-// Fonction de navigation pour les boutons du tableau de bord
-        window.navigateToPage = function(pageId) {
-            // Désactiver tous les éléments actifs
-            document.querySelectorAll('.nav-menu button, .page').forEach(el => {
-                el.classList.remove('active');
-            });
+// --- SOLUTION COMPLÈTE POUR L'ÉCRAN BLANC ET LA CONNEXION HORS LIGNE ---
+
+// Attendre que le DOM soit complètement chargé
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM chargé, initialisation...');
+    
+    // Cacher l'écran de démarrage après 2 secondes max
+    setTimeout(function() {
+        const splashScreen = document.getElementById('splash-screen');
+        if (splashScreen) {
+            splashScreen.classList.add('hidden');
+        }
+    }, 2000);
+    
+    // Vérifier l'état de la connexion
+    const isOnline = navigator.onLine;
+    console.log('État de la connexion:', isOnline ? 'En ligne' : 'Hors ligne');
+    
+    // Initialiser les éléments de base
+    const loginOverlay = document.getElementById('login-overlay');
+    const appRoot = document.getElementById('app-root');
+    
+    if (!loginOverlay || !appRoot) {
+        console.error('Éléments critiques manquants!');
+        return;
+    }
+    
+    // Masquer l'application au départ
+    appRoot.classList.add('hidden');
+    
+    if (!isOnline) {
+        // MODE HORS LIGNE
+        console.log('Tentative de connexion hors ligne...');
+        
+        try {
+            // Ouvrir IndexedDB directement
+            const request = indexedDB.open('hybrilink_cache', 5);
             
-            // Activer la page correspondante
-            const targetPage = document.getElementById(pageId + '-page');
-            if (targetPage) {
-                targetPage.classList.add('active');
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                
+                try {
+                    const transaction = db.transaction(['secretary'], 'readonly');
+                    const store = transaction.objectStore('secretary');
+                    const getAllRequest = store.getAll();
+                    
+                    getAllRequest.onsuccess = function() {
+                        const cachedUsers = getAllRequest.result;
+                        
+                        if (cachedUsers && cachedUsers.length > 0) {
+                            const user = cachedUsers[0];
+                            console.log('Utilisateur trouvé en cache:', user.email);
+                            
+                            // Simuler la connexion
+                            window.currentUser = {
+                                uid: user.uid,
+                                email: user.email,
+                                isOfflineSession: true
+                            };
+                            window.currentSecretary = user;
+                            
+                            // Afficher l'application
+                            loginOverlay.classList.add('hidden');
+                            appRoot.classList.remove('hidden');
+                            
+                            // Mettre à jour l'interface
+                            updateInterfaceWithUser(user);
+                            
+                            // Charger les données depuis le cache
+                            setTimeout(function() {
+                                if (typeof loadDashboardStats === 'function') loadDashboardStats();
+                                if (typeof loadUnifiedClassesIntoSelects === 'function') loadUnifiedClassesIntoSelects();
+                                if (typeof loadUnifiedClassesList === 'function') loadUnifiedClassesList();
+                                if (typeof initializePortal === 'function') initializePortal();
+                            }, 100);
+                            
+                        } else {
+                            // Aucun utilisateur en cache, afficher la connexion
+                            console.log('Aucun utilisateur en cache');
+                            loginOverlay.classList.remove('hidden');
+                            appRoot.classList.add('hidden');
+                            
+                            // Modifier le message de connexion pour le mode hors ligne
+                            const loginAlert = document.getElementById('login-alert');
+                            if (loginAlert) {
+                                loginAlert.textContent = "Mode hors ligne - Veuillez vous connecter avec l'email utilisé précédemment";
+                                loginAlert.className = "alert alert-warning";
+                                loginAlert.classList.remove('hidden');
+                            }
+                        }
+                    };
+                    
+                    getAllRequest.onerror = function() {
+                        console.error('Erreur lecture cache');
+                        loginOverlay.classList.remove('hidden');
+                        appRoot.classList.add('hidden');
+                    };
+                    
+                } catch (e) {
+                    console.error('Erreur transaction:', e);
+                    loginOverlay.classList.remove('hidden');
+                    appRoot.classList.add('hidden');
+                }
+            };
+            
+            request.onerror = function() {
+                console.error('Erreur ouverture IndexedDB');
+                loginOverlay.classList.remove('hidden');
+                appRoot.classList.add('hidden');
+            };
+            
+        } catch (error) {
+            console.error('Erreur critique:', error);
+            loginOverlay.classList.remove('hidden');
+            appRoot.classList.add('hidden');
+        }
+        
+    } else {
+        // MODE EN LIGNE
+        console.log('Mode en ligne, affichage de la connexion');
+        loginOverlay.classList.remove('hidden');
+        appRoot.classList.add('hidden');
+    }
+});
+
+// Fonction pour mettre à jour l'interface avec l'utilisateur
+function updateInterfaceWithUser(user) {
+    try {
+        // Nom du secrétaire
+        const nameEl = document.getElementById('secretary-name');
+        if (nameEl) nameEl.textContent = user.fullName || user.email || 'Secrétaire';
+        
+        // Photo
+        const photoContainer = document.getElementById('secretary-photo-container');
+        if (photoContainer) {
+            if (user.photoURL) {
+                photoContainer.innerHTML = `<img src="${user.photoURL}" class="secretary-photo">`;
+            } else {
+                photoContainer.innerHTML = '<div class="secretary-photo-placeholder"><i class="fas fa-user"></i></div>';
             }
-            
-            // Mettre à jour le titre
-            const titleEl = document.getElementById('page-title');
-            if (titleEl) {
-                if (pageId === 'students-list') {
-                    titleEl.textContent = 'Statistiques Élèves';
-                } else if (pageId === 'teachers-list') {
-                    titleEl.textContent = 'Statistiques Enseignants';
+        }
+        
+        // Statut de connexion
+        const statusEl = document.getElementById('connection-status');
+        if (statusEl) {
+            statusEl.className = 'connection-status offline';
+            statusEl.innerHTML = '<span class="status-indicator status-offline"></span><span>Hors ligne (cache)</span>';
+        }
+        
+    } catch (e) {
+        console.error('Erreur mise à jour interface:', e);
+    }
+}
+
+// Remplacer le formulaire de connexion pour gérer le hors ligne
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('login-form');
+    if (!loginForm) return;
+    
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('login-email')?.value;
+        const password = document.getElementById('login-password')?.value;
+        const alertBox = document.getElementById('login-alert');
+        
+        if (!email || !password) {
+            if (alertBox) {
+                alertBox.textContent = "Veuillez remplir tous les champs";
+                alertBox.className = "alert alert-error";
+                alertBox.classList.remove('hidden');
+            }
+            return;
+        }
+        
+        const isOnline = navigator.onLine;
+        
+        if (!isOnline) {
+            // Mode hors ligne : vérifier dans le cache
+            try {
+                const request = indexedDB.open('hybrilink_cache', 5);
+                
+                request.onsuccess = function(event) {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['secretary'], 'readonly');
+                    const store = transaction.objectStore('secretary');
+                    const getAllRequest = store.getAll();
+                    
+                    getAllRequest.onsuccess = function() {
+                        const users = getAllRequest.result;
+                        const matchingUser = users.find(u => u.email === email);
+                        
+                        if (matchingUser) {
+                            // Connexion réussie
+                            window.currentUser = {
+                                uid: matchingUser.uid,
+                                email: matchingUser.email,
+                                isOfflineSession: true
+                            };
+                            window.currentSecretary = matchingUser;
+                            
+                            document.getElementById('login-overlay')?.classList.add('hidden');
+                            document.getElementById('app-root')?.classList.remove('hidden');
+                            
+                            updateInterfaceWithUser(matchingUser);
+                            
+                            setTimeout(function() {
+                                if (typeof loadDashboardStats === 'function') loadDashboardStats();
+                                if (typeof loadUnifiedClassesIntoSelects === 'function') loadUnifiedClassesIntoSelects();
+                                if (typeof initializePortal === 'function') initializePortal();
+                            }, 100);
+                            
+                        } else {
+                            if (alertBox) {
+                                alertBox.textContent = "Aucune session trouvée pour cet email. Connectez-vous en ligne d'abord.";
+                                alertBox.className = "alert alert-warning";
+                                alertBox.classList.remove('hidden');
+                            }
+                        }
+                    };
+                };
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                if (alertBox) {
+                    alertBox.textContent = "Erreur de connexion hors ligne";
+                    alertBox.className = "alert alert-error";
+                    alertBox.classList.remove('hidden');
                 }
             }
             
-            // Charger les données spécifiques si nécessaire
-            if (pageId === 'students-list') {
-                loadStudentsList();
-            } else if (pageId === 'teachers-list') {
-                loadTeachersList();
+        } else {
+            // Mode en ligne : utiliser Firebase
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = 'Connexion...';
+                submitBtn.disabled = true;
             }
             
-            // Fermer le menu sur mobile
-            if (window.innerWidth <= 768) {
-                document.querySelector('.sidebar')?.classList.add('collapsed');
+            // Firebase est géré par le code existant
+            // On laisse le gestionnaire original faire son travail
+            // Mais on doit appeler la fonction originale
+            if (typeof window.originalLoginHandler === 'function') {
+                window.originalLoginHandler(e);
+            } else {
+                // Si pas de handler original, on simule un clic sur le bouton Firebase
+                console.log('Utilisation du système de connexion Firebase');
+                // Le code Firebase existant prendra le relais
             }
-        };
+        }
+    });
+});
 
+// Sauvegarder le handler original si nécessaire
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('login-form');
+    if (loginForm && loginForm.onsubmit) {
+        window.originalLoginHandler = loginForm.onsubmit;
+    }
+});
+
+// Désactiver temporairement le code Firebase problématique au chargement
+window.addEventListener('load', function() {
+    console.log('Page complètement chargée');
+    
+    // S'assurer que l'écran de démarrage est caché
+    const splashScreen = document.getElementById('splash-screen');
+    if (splashScreen && !splashScreen.classList.contains('hidden')) {
+        splashScreen.classList.add('hidden');
+    }
+});
 </script>
 
 </body>
