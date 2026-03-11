@@ -1,124 +1,79 @@
 {
-  "name": "hybrilink - Espace Secrétariat",
-  "short_name": "hybrilink tech",
-  "description": "Application de gestion scolaire complète pour le secrétariat - Inscriptions, paiements, rapports",
-  "lang": "fr-FR",
-  "dir": "ltr",
-  "start_url": "/",
+  "name": "TheoVêt - Gestion Commerce",
+  "short_name": "TheoVêt",
+  "description": "Solution complète de gestion de commerce de vêtements",
+  "start_url": "index.html",
   "display": "standalone",
-  "orientation": "portrait",
+  "background_color": "#3498db",
   "theme_color": "#3498db",
-  "background_color": "#f5f6fa",
+  "orientation": "portrait-primary",
   "scope": "/",
+  "lang": "fr",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
-      "src": "icons/icon-72x72.png",
+      "src": "icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-96x96.png",
+      "src": "icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-128x128.png",
+      "src": "icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-144x144.png",
+      "src": "icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-152x152.png",
+      "src": "icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-192x192.png",
+      "src": "icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-384x384.png",
+      "src": "icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/maskable-icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icons/maskable-icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     }
   ],
   "screenshots": [
     {
-      "src": "screenshots/dashboard.jpg",
+      "src": "screenshot1.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
-      "label": "Tableau de bord hybrilink"
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tableau de bord TheoVêt"
     },
     {
-      "src": "screenshots/students.jpg",
-      "sizes": "1280x720",
-      "type": "image/jpeg",
-      "label": "Gestion des élèves"
-    }
-  ],
-  "categories": ["education", "productivity", "business"],
-  "prefer_related_applications": false,
-  "related_applications": [],
-  "shortcuts": [
-    {
-      "name": "Tableau de bord",
-      "short_name": "Dashboard",
-      "description": "Accéder au tableau de bord",
-      "url": "/#dashboard",
-      "icons": [
-        {
-          "src": "icons/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Inscrire un élève",
-      "short_name": "Inscription",
-      "description": "Nouvelle inscription d'élève",
-      "url": "/#enroll-student",
-      "icons": [
-        {
-          "src": "icons/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "src": "creenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Gestion des ventes"
     }
   ]
 }
