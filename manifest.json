@@ -1,148 +1,49 @@
 {
-  "name": "Espace Parent - hybrilink",
-  "short_name": "Hybrilink_teck",
-  "description": "Hybrilink Application  scolaire pour le secretaire",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#3392d1",
-  "theme_color": "#3498db",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "fr-FR",
+  "background_color": "#3498db",
+  "description": "Gestion scolaire complète",
   "dir": "ltr",
-  "categories": [
-    "education",
-    "productivity",
-    "utilities"
-  ],
-  "prefer_related_applications": false,
+  "display": "standalone",
+  "name": "hybrilink Secrétariat",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "hybrilink Secrétariat",
+  "start_url": "/",
+  "theme_color": "#3498db",
   "icons": [
-    
     {
-    
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/dashboard.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Tableau de bord"
+      "src": "https://hybrilinktech-tech.github.io/Secr-tariat/icon-192x192.png",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
     },
     {
-      "src": "/screenshots/notes.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Notes et cotes"
+      "src": "https://hybrilinktech-tech.github.io/Secr-tariat/icon-72x72.png",
+      "sizes": "72x72",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 72,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
     },
     {
-      "src": "/screenshots/communiques.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Communiqués"
+      "src": "https://hybrilinktech-tech.github.io/Secr-tariat/icon-167x167.png",
+      "sizes": "167x167",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 167,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
     }
-  ],
-  "shortcuts": [
-    {
-      "name": "Tableau de bord",
-      "short_name": "Dashboard",
-      "description": "Accéder au tableau de bord",
-      "url": "/index.html?page=dashboard",
-      "icons": [
-        {
-          "src": "/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Notes et cotes",
-      "short_name": "Notes",
-      "description": "Consulter les notes des enfants",
-      "url": "/index.html?page=grades",
-      "icons": [
-        {
-          "src": "/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Communiqués",
-      "short_name": "Communiqués",
-      "description": "Voir les communiqués de paiement",
-      "url": "/index.html?page=communiques",
-      "icons": [
-        {
-          "src": "/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Notifications",
-      "short_name": "Alertes",
-      "description": "Voir les notifications",
-      "url": "/index.html?page=notifications",
-      "icons": [
-        {
-          "src": "/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ],
-  "protocol_handlers": [
-    {
-      "protocol": "web+cslacolombe",
-      "url": "/index.html?url=%s"
-    }
-  ],
-  "share_target": {
-    "action": "/index.html",
-    "method": "GET",
-    "enctype": "application/x-www-form-urlencoded",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  },
-  "launch_handler": {
-    "client_mode": "focus-existing"
-  },
-  "file_handlers": [
-    {
-      "action": "/parent.html",
-      "accept": {
-        "application/pdf": [
-          ".pdf"
-        ],
-        "image/*": [
-          ".jpg",
-          ".jpeg",
-          ".png",
-          ".gif"
-        ]
-      }
-    }
-  ],
-  "display_override": [
-    "window-controls-overlay",
-    "minimal-ui"
-  ],
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
-  "permissions": [
-    "notifications",
-    "background-sync",
-    "periodic-background-sync"
-  ],
-  "background": {
-    "service_worker": "sw.js",
-    "type": "module"
-  }
+  ]
 }
