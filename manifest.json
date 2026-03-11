@@ -1,18 +1,21 @@
 {
-  "name": "Espace Parent - CS La Colombe",
-  "short_name": "CS La Colombe",
-  "description": "Application de suivi scolaire pour les parents",
+  "name": "Espace Parent - hybrilink",
+  "short_name": "Hybrilink_teck",
+  "description": "Hybrilink Application de suivi scolaire pour les parents",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#3498db",
+  "background_color": "#3392d1",
   "theme_color": "#3498db",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "fr-FR",
   "dir": "ltr",
-  "categories": ["education", "productivity", "utilities"],
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
+  ],
   "prefer_related_applications": false,
-  
   "icons": [
     {
       "src": "/icon-72x72.png",
@@ -63,7 +66,6 @@
       "purpose": "any maskable"
     }
   ],
-  
   "screenshots": [
     {
       "src": "/screenshots/dashboard.png",
@@ -87,45 +89,62 @@
       "label": "Communiqués"
     }
   ],
-  
   "shortcuts": [
     {
       "name": "Tableau de bord",
       "short_name": "Dashboard",
       "description": "Accéder au tableau de bord",
       "url": "/index.html?page=dashboard",
-      "icons": [{ "src": "/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Notes et cotes",
       "short_name": "Notes",
       "description": "Consulter les notes des enfants",
       "url": "/index.html?page=grades",
-      "icons": [{ "src": "/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Communiqués",
       "short_name": "Communiqués",
       "description": "Voir les communiqués de paiement",
       "url": "/index.html?page=communiques",
-      "icons": [{ "src": "/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Notifications",
       "short_name": "Alertes",
       "description": "Voir les notifications",
       "url": "/index.html?page=notifications",
-      "icons": [{ "src": "/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
-  
   "protocol_handlers": [
     {
       "protocol": "web+cslacolombe",
       "url": "/index.html?url=%s"
     }
   ],
-  
   "share_target": {
     "action": "/index.html",
     "method": "GET",
@@ -136,33 +155,37 @@
       "url": "url"
     }
   },
-  
   "launch_handler": {
     "client_mode": "focus-existing"
   },
-  
   "file_handlers": [
     {
       "action": "/parent.html",
       "accept": {
-        "application/pdf": [".pdf"],
-        "image/*": [".jpg", ".jpeg", ".png", ".gif"]
+        "application/pdf": [
+          ".pdf"
+        ],
+        "image/*": [
+          ".jpg",
+          ".jpeg",
+          ".png",
+          ".gif"
+        ]
       }
     }
   ],
-  
-  "display_override": ["window-controls-overlay", "minimal-ui"],
-  
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
   "edge_side_panel": {
     "preferred_width": 400
   },
-  
   "permissions": [
     "notifications",
     "background-sync",
     "periodic-background-sync"
   ],
-  
   "background": {
     "service_worker": "sw.js",
     "type": "module"
