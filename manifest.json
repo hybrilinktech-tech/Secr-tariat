@@ -1,6 +1,6 @@
 {
-  "name": "TheoVêt - Gestion Commerce",
-  "short_name": "TheoVêt",
+  "name": "Hybrilink",
+  "short_name": "Hybrilink _tech",
   "description": "Solution complète de gestion de commerce de vêtements",
   "start_url": "index.html",
   "display": "standalone",
@@ -9,7 +9,13 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "fr",
-  "categories": ["business", "productivity", "utilities"],
+  "categories": [
+    "business",
+    "education",
+    "productivity",
+    "social",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "icon-72x72.png",
@@ -68,12 +74,3 @@
       "form_factor": "wide",
       "label": "Tableau de bord TheoVêt"
     },
-    {
-      "src": "creenshot2.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Gestion des ventes"
-    }
-  ]
-}
