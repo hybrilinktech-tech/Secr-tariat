@@ -600,42 +600,21 @@
                 <i class="fas fa-edit" style="font-size: 2rem; color: var(--primary);"></i>
                 <h3 style="margin-top: 0.5rem;">Secrétariat</h3>
             </div>
-            <ul class="nav-menu">
-                <li><button class="active" data-page="dashboard"><i class="fas fa-tachometer-alt fa-fw"></i> Tableau de Bord</button></li>
-                <li><button data-page="enroll-student"><i class="fas fa-user-graduate fa-fw"></i> Élèves</button></li>
-                <li><button data-page="enroll-teacher"><i class="fas fa-chalkboard-teacher fa-fw"></i> Enseignants</button></li>
-                <li><button data-page="manage-classes"><i class="fas fa-door-open fa-fw"></i> Classes</button></li>
-                <li class="has-submenu">
-
-
-                   <li><button data-page="validate-payment"><i class="fas fa-money-bill-wave fa-fw"></i> Valider Paiements </button></li>
-
-<li><button data-page="manage-fees"><i class="fas fa-money-bill-wave fa-fw"></i>Gestion des Frais</button></li>
-<li><button data-page="salaries"><i class="fas fa-money-bill-wave fa-fw"></i>Paiement Salaires</button></li>
-                    <ul class="nav-submenu">
-                        
-                        
-                        
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                  <li><button data-page="workers"><i class="fa-solid fa-user"></i>Personnels Ouvriers</button></li>
-
-
-                    <ul class="nav-submenu">
-                        
-                        
-                    </ul>
-                </li>
-                <li><button data-page="communication"><i class="fas fa-bullhorn fa-fw"></i> Communiquer</button></li>
-<li>
-<li><button data-page="rapport-general"onclick="window.location.href='new.html'"><i class="fas fa-chart-pie"  ></i> Rapport général</button></li>
-                <li><button data-page="profile"><i class="fas fa-user fa-fw"></i> Mon Profil</button></li>
-            
-  <li><button data-page="admin-reports"><i class="fas fa-chart-bar fa-fw"></i> Rapports</button></li>
-                   
-                </li>
-            </ul>
+       <ul class="nav-menu">
+    <li><button class="active" data-page="dashboard"><i class="fas fa-tachometer-alt fa-fw"></i> Tableau de Bord</button></li>
+    <li><button data-page="enroll-student"><i class="fas fa-user-graduate fa-fw"></i> Élèves</button></li>
+    <li><button data-page="enroll-teacher"><i class="fas fa-chalkboard-teacher fa-fw"></i> Enseignants</button></li>
+    <li><button data-page="manage-classes"><i class="fas fa-door-open fa-fw"></i> Classes</button></li>
+    <li><button data-page="validate-payment"><i class="fas fa-money-bill-wave fa-fw"></i> Valider Paiements</button></li>
+    <li><button data-page="manage-fees"><i class="fas fa-money-bill-wave fa-fw"></i> Gestion des Frais</button></li>
+    <li><button data-page="manage-fee-types"><i class="fas fa-tags fa-fw"></i> Types de Frais</button></li>
+    <li><button data-page="salaries"><i class="fas fa-money-bill-wave fa-fw"></i> Paiement Salaires</button></li>
+    <li><button data-page="workers"><i class="fa-solid fa-user"></i> Personnels Ouvriers</button></li>
+    <li><button data-page="communication"><i class="fas fa-bullhorn fa-fw"></i> Communiquer</button></li>
+    <li><button data-page="rapport-general" onclick="window.location.href='new.html'"><i class="fas fa-chart-pie"></i> Rapport général</button></li>
+    <li><button data-page="profile"><i class="fas fa-user fa-fw"></i> Mon Profil</button></li>
+    <li><button data-page="admin-reports"><i class="fas fa-chart-bar fa-fw"></i> Rapports</button></li>
+</ul>
         </nav>
         
         <div class="main-content">
@@ -875,10 +854,10 @@
         <label>Année scolaire *</label>
         <select id="unified-student-school-year" class="form-control" required>
             <option value="">Sélectionner</option>
-            <option value="2023-2024">2023-2024</option>
-            <option value="2024-2025">2024-2025</option>
             <option value="2025-2026">2025-2026</option>
             <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2029</option>
         </select>
     </div>
 </div>
@@ -993,10 +972,10 @@
         <label>Année scolaire *</label>
         <select id="unified-teacher-school-year" class="form-control" required>
             <option value="">Sélectionner</option>
-            <option value="2023-2024">2023-2024</option>
-            <option value="2024-2025">2024-2025</option>
             <option value="2025-2026">2025-2026</option>
             <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2029</option>
         </select>
     </div>
 </div>
@@ -1064,6 +1043,57 @@
                         </form>
                     </div>
                 </div>
+
+<!-- Page: Gestion des types de frais -->
+<div id="manage-fee-types-page" class="page">
+    <div class="card">
+        <h4><i class="fas fa-tags"></i> Gestion des types de frais</h4>
+        
+        <!-- Message d'information -->
+        <div class="alert alert-info" style="margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i>
+            <strong>Comment ça marche ?</strong><br>
+            - Les types de frais que vous créez apparaîtront dans tous les sélecteurs (paiements, communiqués, rapports)<br>
+            - Les frais "Frais d'inscription" et "Frais de réintégration" sont fixes et ne peuvent être supprimés<br>
+            - Un type de frais utilisé dans des paiements ne peut pas être supprimé
+        </div>
+        
+        <!-- Formulaire d'ajout -->
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+            <h5 style="margin-bottom: 15px;"><i class="fas fa-plus-circle"></i> Créer un nouveau type de frais</h5>
+            <form id="add-fee-type-form">
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;">
+                        <label>Nom du type de frais *</label>
+                        <input type="text" id="new-fee-type-name" class="form-control" placeholder="Ex: Frais de transport, Frais de cantine, Frais de sortie pédagogique" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Catégorie</label>
+                        <select id="new-fee-type-category" class="form-control">
+                            <option value="mensuel">📅 Mensuel (payé chaque mois)</option>
+                            <option value="ponctuel">⚡ Ponctuel (payé une fois)</option>
+                            <option value="general">📌 Général</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 0 0 auto; align-self: flex-end;">
+                        <button type="submit" class="btn btn-primary" id="add-fee-type-btn">
+                            <i class="fas fa-plus"></i> Créer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Liste des types existants -->
+        <h5 style="margin-bottom: 15px;"><i class="fas fa-list"></i> Liste des types de frais</h5>
+        <div id="fee-types-list-container">
+            <div style="text-align: center; padding: 40px;">
+                <div class="loading-spinner" style="width: 30px; height: 30px; margin: 0 auto 10px;"></div>
+                <p>Chargement des types de frais...</p>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- Page: Gestion des Classes -->
                 <div id="manage-classes-page" class="page">
@@ -1174,6 +1204,27 @@
                                     <label>Matricule de l'élève</label>
                                     <input type="text" id="onsite-student-id" class="form-control" placeholder="Ex: 2023SC001" required>
                                 </div>
+
+<!-- Dans la div avec class="card" pour les paiements sur place, après le champ matricule -->
+<div id="payment-status-container" class="hidden" style="margin-top: 15px;">
+    <div class="alert alert-info" style="padding: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h5 style="margin: 0;"><i class="fas fa-chart-line"></i> Statut des paiements - Année scolaire <span id="status-school-year"></span></h5>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="togglePaymentStatusDetails()">
+                <i class="fas fa-chevron-down"></i> Détails
+            </button>
+        </div>
+        
+        <!-- Résumé rapide -->
+        <div id="payment-summary" style="margin-bottom: 10px;"></div>
+        
+        <!-- Détails complets (cachés par défaut) -->
+        <div id="payment-details" style="display: none; margin-top: 15px;"></div>
+        
+        <!-- Barre de progression -->
+        <div id="payment-progress" style="margin-top: 10px;"></div>
+    </div>
+</div>
                                 <div class="form-group" style="flex: 1;">
                                     <label>Type d'élève</label>
                                     <select id="onsite-student-type" class="form-control" required>
@@ -1195,13 +1246,8 @@
                                 <div class="form-group" style="flex: 1;">
                                     <label>Type de frais</label>
                                     <select id="onsite-payment-type" class="form-control" required>
-                                        <option value="">Sélectionner</option>
-                                        <option value="Frais scolaires">Frais scolaires</option>
-                                        <option value="Frais de l'état">Frais de l'état</option>
-                                        <option value="visite">visite</option>
-                                        <option value="achat pull">achat pull</option>
-                                        <option value="Autres">Autres (veuillez spécifier)</option>
-                                    </select>
+    <option value="">Chargement...</option>
+</select>
                                 </div>
                                 <div class="form-group" style="flex: 1;">
                                     <label>Spécification (si autres)</label>
@@ -1267,14 +1313,9 @@
                                 <option value="inscription">Frais d'inscription</option>
                             </select>
                             <select id="fees-type" class="form-control">
-                                <option value="all">Tous les types</option>
-                                <option value="Frais scolaires">Frais scolaires</option>
-                                <option value="Frais de l'état">Frais de l'état</option>
-                                <option value="visite">visite</option>
-                                <option value="achat pull">achat pull</option>
-                                <option value="Frais d'inscription">Frais d'inscription</option>
-                                <option value="Autres">Autres</option>
-                            </select>
+    <option value="all">Tous les types</option>
+    <!-- Les options seront chargées dynamiquement -->
+</select>
 <!-- Dans la div avec la classe "fees-controls", après le select "fees-type", ajoutez : -->
 <div class="form-group" style="flex: 1;">
     <label for="fees-school-year">Année scolaire <span style="color: #e74c3c;">*</span></label>
@@ -1328,7 +1369,10 @@
                             <form id="teacher-salary-config-form">
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Matricule enseignant *</label><input type="text" id="teacher-config-matricule" class="form-control" placeholder="Ex: ENS001" required></div>
-                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="teacher-config-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="teacher-config-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2029</option></select></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Montant mensuel ($) *</label><div class="currency-input-group"><span class="currency-symbol">$</span><input type="number" id="teacher-config-amount" class="form-control currency-input" step="0.01" min="0" required></div></div>
@@ -1342,7 +1386,10 @@
                             <h4>Paiement des salaires - Enseignants</h4>
                             <form id="teacher-salary-form">
                                 <div class="form-row">
-                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="teacher-salary-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="teacher-salary-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                                     <div class="form-group" style="flex: 1;"><label>Mois à payer *</label><select id="teacher-salary-month" class="form-control" required><option value="">Sélectionner</option><option value="janvier">Janvier</option><option value="février">Février</option><option value="mars">Mars</option><option value="avril">Avril</option><option value="mai">Mai</option><option value="juin">Juin</option><option value="juillet">Juillet</option><option value="août">Août</option><option value="septembre">Septembre</option><option value="octobre">Octobre</option><option value="novembre">Novembre</option><option value="décembre">Décembre</option></select></div>
                                 </div>
                                 <div class="form-row">
@@ -1379,7 +1426,10 @@
                             <form id="worker-salary-config-form">
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Matricule personnel *</label><input type="text" id="worker-config-matricule" class="form-control" placeholder="Ex: PER001" required></div>
-                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="worker-config-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="worker-config-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Montant mensuel ($) *</label><div class="currency-input-group"><span class="currency-symbol">$</span><input type="number" id="worker-config-amount" class="form-control currency-input" step="0.01" min="0" required></div></div>
@@ -1393,7 +1443,10 @@
                             <h4>Paiement des salaires - Personnels</h4>
                             <form id="worker-salary-form">
                                 <div class="form-row">
-                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="worker-salary-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="worker-salary-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                                     <div class="form-group" style="flex: 1;"><label>Mois à payer *</label><select id="worker-salary-month" class="form-control" required><option value="">Sélectionner</option><option value="janvier">Janvier</option><option value="février">Février</option><option value="mars">Mars</option><option value="avril">Avril</option><option value="mai">Mai</option><option value="juin">Juin</option><option value="juillet">Juillet</option><option value="août">Août</option><option value="septembre">Septembre</option><option value="octobre">Octobre</option><option value="novembre">Novembre</option><option value="décembre">Décembre</option></select></div>
                                 </div>
                                 <div class="form-row">
@@ -1442,7 +1495,10 @@
                 </select></div>
             </div>
             <div class="form-row">
-                <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="agent-config-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="agent-config-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                 <div class="form-group" style="flex: 1;"><label>Montant mensuel ($) *</label><div class="currency-input-group"><span class="currency-symbol">$</span><input type="number" id="agent-config-amount" class="form-control currency-input" step="0.01" min="0" required></div></div>
             </div>
             <div class="form-row">
@@ -1456,7 +1512,10 @@
     <h4>Paiement des salaires - Agents Administratifs</h4>
     <form id="agent-salary-form">
         <div class="form-row">
-            <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="agent-salary-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+            <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="agent-salary-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
             <div class="form-group" style="flex: 1;"><label>Mois à payer *</label><select id="agent-salary-month" class="form-control" required><option value="">Sélectionner</option><option value="janvier">Janvier</option><option value="février">Février</option><option value="mars">Mars</option><option value="avril">Avril</option><option value="mai">Mai</option><option value="juin">Juin</option><option value="juillet">Juillet</option><option value="août">Août</option><option value="septembre">Septembre</option><option value="octobre">Octobre</option><option value="novembre">Novembre</option><option value="décembre">Décembre</option></select></div>
         </div>
         <div class="form-row">
@@ -1570,12 +1629,17 @@
                             <h4>Créer un communiqué de paiement</h4>
                             <form id="communique-form">
                                 <div class="form-row">
-                                    <div class="form-group" style="flex: 1;"><label>Type de frais *</label><select id="communique-fee-type" class="form-control" required><option value="">Sélectionner</option><option value="Frais scolaires">Frais scolaires</option><option value="Frais de l'état">Frais de l'état</option><option value="visite">Visite</option><option value="achat pull">Achat pull</option><option value="Frais d'inscription">Frais d'inscription</option><option value="Autres">Autres (spécifier ci-dessous)</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Type de frais *</label><select id="communique-fee-type" class="form-control" required>
+    <option value="">Chargement...</option>
+</select></div>
                                     <div class="form-group" style="flex: 1;"><label>Autres frais (si autre)</label><input type="text" id="communique-other-fee" class="form-control" placeholder="Spécifiez le type de frais"></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Date limite de paiement *</label><input type="date" id="communique-deadline" class="form-control" required></div>
-                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="communique-school-year" class="form-control" required><option value="">Sélectionner</option><option value="2023-2024">2023-2024</option><option value="2024-2025">2024-2025</option><option value="2025-2026">2025-2026</option></select></div>
+                                    <div class="form-group" style="flex: 1;"><label>Année scolaire *</label><select id="communique-school-year" class="form-control" required><option value="">Sélectionner</option>     <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group" style="flex: 1;"><label>Mois concerné *</label><select id="communique-month" class="form-control" required><option value="">Sélectionner</option><option value="janvier">Janvier</option><option value="février">Février</option><option value="mars">Mars</option><option value="avril">Avril</option><option value="mai">Mai</option><option value="juin">Juin</option><option value="juillet">Juillet</option><option value="août">Août</option><option value="septembre">Septembre</option><option value="octobre">Octobre</option><option value="novembre">Novembre</option><option value="décembre">Décembre</option></select></div>
@@ -1641,9 +1705,15 @@
                             </select>
                             <div id="daily-controls" class="report-controls"><input type="date" id="report-date" class="form-control"></div>
                             <div id="monthly-controls" class="report-controls hidden"><select id="report-month" class="form-control"><option value="janvier">Janvier</option><option value="février">Février</option><option value="mars">Mars</option><option value="avril">Avril</option><option value="mai">Mai</option><option value="juin">Juin</option><option value="juillet">Juillet</option><option value="août">Août</option><option value="septembre">Septembre</option><option value="octobre">Octobre</option><option value="novembre">Novembre</option><option value="décembre">Décembre</option></select></div>
-                            <div id="yearly-controls" class="report-controls hidden"><select id="report-year" class="form-control"><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option></select></div>
+                            <div id="yearly-controls" class="report-controls hidden"><select id="report-year" class="form-control"><option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2027</option></select></div>
                             <div id="class-controls" class="report-controls hidden"><select id="report-class" class="form-control"><option value="">Toutes les classes</option></select></div>
-                            <div id="fees-type-controls" class="report-controls hidden"><select id="report-fees-type" class="form-control"><option value="all">Tous les frais</option><option value="Frais scolaires">Frais scolaires</option><option value="Frais de l'état">Frais de l'état</option><option value="visite">visite</option><option value="achat pull">achat pull</option><option value="Autres">Autres</option></select></div>
+                            <div id="fees-type-controls" class="report-controls hidden"><select id="report-fees-type" class="form-control">
+    <option value="all">Tous les frais</option>
+    <!-- Les options seront chargées dynamiquement -->
+</select></div>
                             <button id="generate-report-btn" class="btn btn-primary">Générer Rapport</button>
                             <button id="export-report-btn" class="btn btn-success">Exporter PDF</button>
                             <button id="back-report-btn" class="btn btn-secondary" style="display: none;"><i class="fas fa-arrow-left"></i> Retour</button>
@@ -1852,10 +1922,10 @@
                 <label>Année scolaire *</label>
                 <select id="reintegration-school-year" class="form-control" required>
                     <option value="">Sélectionner</option>
-                    <option value="2023-2024">2023-2024</option>
-                    <option value="2024-2025">2024-2025</option>
-                    <option value="2025-2026">2025-2026</option>
-                    <option value="2026-2027">2026-2027</option>
+                  <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2029</option>
                 </select>
             </div>
             
@@ -1914,10 +1984,10 @@
                 <label>Année scolaire *</label>
                 <select id="reintegration-teacher-year" class="form-control" required>
                     <option value="">Sélectionner</option>
-                    <option value="2023-2024">2023-2024</option>
-                    <option value="2024-2025">2024-2025</option>
-                    <option value="2025-2026">2025-2026</option>
-                    <option value="2026-2027">2026-2027</option>
+                 <option value="2025-2026">2025-2026</option>
+            <option value="2026-2027">2026-2027</option>
+            <option value="2027-2028">2027-2028</option>
+            <option value="2028-2029">2028-2029</option>
                 </select>
             </div>
             
@@ -5130,6 +5200,8 @@ window.addEventListener('offline', () => {
             loadWorkersList();
             loadAgentsList();
             loadClassesForCommunique();
+
+
             
             // Initialiser la date du jour pour les rapports
             const today = new Date().toISOString().split('T')[0];
@@ -5138,7 +5210,13 @@ window.addEventListener('offline', () => {
             
             const printDate = document.getElementById('print-communique-date');
             if (printDate) printDate.value = today;
-        }
+// Initialiser les types de frais au chargement
+setTimeout(async () => {
+    if (currentSecretary) {
+        await initFeeTypesCollection();
+        await loadFeeTypes();
+    }
+}, 2000);}
 
         function showAlert(message, type = 'info') {
             const alertBox = document.getElementById('global-alert');
@@ -6356,40 +6434,52 @@ async function loadUnifiedClassesIntoSelects() {
         let payments = [];
         
         if (isOnline) {
-            let queryConstraints = [where('studentId', '==', studentMatricule)];
-            if (paymentType) queryConstraints.push(where('paymentType', '==', paymentType));
+            // Construire la requête avec tous les filtres
+            let constraints = [where('studentId', '==', studentMatricule)];
             
-            // Si une année scolaire est spécifiée, filtrer par celle-ci
-            if (schoolYear) {
-                queryConstraints.push(where('schoolYear', '==', schoolYear));
+            // 🔥 CRUCIAL : Filtrer par TYPE DE FRAIS exact
+            if (paymentType && paymentType !== 'all' && paymentType !== 'Autres') {
+                constraints.push(where('paymentType', '==', paymentType));
             }
             
-            const paymentsSnap = await getDocs(query(collection(db, 'payments'), ...queryConstraints));
-            payments = paymentsSnap.docs.map(d => d.data());
+            // Filtrer par année scolaire
+            if (schoolYear) {
+                constraints.push(where('schoolYear', '==', schoolYear));
+            }
+            
+            const paymentsSnap = await getDocs(query(collection(db, 'payments'), ...constraints));
+            payments = paymentsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            
         } else {
+            // Mode hors ligne
             payments = await getCachedData('payments');
             payments = payments.filter(p => p.studentId === studentMatricule);
             
-            // Filtrer par année scolaire si spécifiée
+            // Filtrer par année scolaire
             if (schoolYear) {
                 payments = payments.filter(p => p.schoolYear === schoolYear);
             }
             
-            if (paymentType) {
+            // Filtrer par type de frais
+            if (paymentType && paymentType !== 'all' && paymentType !== 'Autres') {
                 payments = payments.filter(p => p.paymentType === paymentType);
             }
         }
         
+        // Extraire les mois payés (exclure les inscriptions)
         const paidMonths = new Set();
         payments.forEach(payment => {
-            if (payment.month && payment.month !== 'inscription') {
+            if (payment.month && payment.month !== 'inscription' && payment.month !== 'Frais d\'inscription') {
                 paidMonths.add(payment.month);
             }
         });
         
+        console.log(`📊 Mois payés pour ${studentMatricule} - Type: ${paymentType || 'all'} - Année: ${schoolYear || 'all'}:`, Array.from(paidMonths));
+        
         return paidMonths;
+        
     } catch (error) {
-        console.error("Erreur vérification mois payés:", error);
+        console.error("❌ Erreur vérification mois payés:", error);
         return new Set();
     }
 }
@@ -6488,7 +6578,8 @@ document.getElementById('onsite-student-id')?.addEventListener('blur', async () 
             monthlyAmountInput?.addEventListener('input', updateTotalAmount);
         }
 
-     async function generateMonthCheckboxes(studentMatricule, studentType, paymentType = null) {
+     // Version améliorée de generateMonthCheckboxes avec affichage du statut
+async function generateMonthCheckboxes(studentMatricule, studentType, paymentType = null) {
     const container = document.getElementById('onsite-months-container');
     if (!container) return;
     
@@ -6499,8 +6590,10 @@ document.getElementById('onsite-student-id')?.addEventListener('blur', async () 
     
     // Récupérer l'année scolaire courante de l'élève
     let currentSchoolYear = null;
+    let studentData = null;
+    
     try {
-        const studentData = await getStudentCurrentData(studentMatricule, studentType);
+        studentData = await getStudentCurrentData(studentMatricule, studentType);
         if (studentData) {
             currentSchoolYear = studentData.schoolYear;
         }
@@ -6508,50 +6601,122 @@ document.getElementById('onsite-student-id')?.addEventListener('blur', async () 
         console.error('Erreur récupération année scolaire:', e);
     }
     
+    if (!currentSchoolYear) {
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth() + 1;
+        currentSchoolYear = currentMonth >= 9 ? `${currentYear}-${currentYear + 1}` : `${currentYear - 1}-${currentYear}`;
+    }
+    
+    // Récupérer les mois déjà payés pour CE TYPE DE FRAIS
     let paidMonths = new Set();
-    if (studentMatricule) {
-        // Passer l'année scolaire pour filtrer
+    if (studentMatricule && paymentType && paymentType !== 'Autres') {
         paidMonths = await getPaidMonthsForStudent(studentMatricule, paymentType, currentSchoolYear);
     }
     
+    // Récupérer les montants payés par mois (pour afficher les montants)
+    let paymentsByMonth = {};
+    try {
+        let payments = [];
+        if (isOnline) {
+            const paymentsQuery = query(
+                collection(db, 'payments'),
+                where('studentId', '==', studentMatricule),
+                where('schoolYear', '==', currentSchoolYear),
+                where('paymentType', '==', paymentType)
+            );
+            const paymentsSnap = await getDocs(paymentsQuery);
+            payments = paymentsSnap.docs.map(doc => doc.data());
+        } else {
+            payments = await getCachedData('payments');
+            payments = payments.filter(p => 
+                p.studentId === studentMatricule && 
+                p.schoolYear === currentSchoolYear &&
+                p.paymentType === paymentType
+            );
+        }
+        
+        payments.forEach(p => {
+            if (p.month) {
+                paymentsByMonth[p.month] = p.amount;
+            }
+        });
+    } catch (e) {
+        console.error('Erreur récupération montants:', e);
+    }
+    
+    // Afficher l'information de l'année
+    const yearInfo = document.createElement('div');
+    yearInfo.className = 'alert alert-info';
+    yearInfo.style.marginBottom = '10px';
+    yearInfo.style.padding = '8px';
+    yearInfo.style.fontSize = '12px';
+    yearInfo.innerHTML = `
+        <i class="fas fa-calendar-alt"></i>
+        <strong>Année scolaire :</strong> ${currentSchoolYear}
+        ${paymentType ? `<br><strong>Type de frais :</strong> ${paymentType}` : ''}
+        ${paidMonths.size > 0 ? `<br><strong>${paidMonths.size} mois déjà payés</strong>` : ''}
+    `;
+    
+    // Générer les checkbox des mois avec montants
     let html = '';
     months.forEach(month => {
         const isPaid = paidMonths.has(month);
+        const amountPaid = paymentsByMonth[month] || 0;
+        
         html += `
-            <div class="month-checkbox" style="${isPaid ? 'opacity: 0.5;' : ''}">
+            <div class="month-checkbox" style="${isPaid ? 'opacity: 0.7; background: #f0f0f0; border-radius: 5px; padding: 8px; margin: 4px 0;' : 'padding: 8px; margin: 4px 0;'}">
                 <input type="checkbox" 
                        id="month-${month}" 
                        value="${month}" 
                        class="month-checkbox-input"
-                       ${isPaid ? 'disabled' : ''}>
-                <label for="month-${month}" style="${isPaid ? 'color: #999; text-decoration: line-through;' : ''}">
-                    ${month} ${isPaid ? '(déjà payé)' : ''}
+                       ${isPaid ? 'disabled checked' : ''}>
+                <label for="month-${month}" style="${isPaid ? 'color: #999; text-decoration: line-through;' : 'font-weight: normal;'}">
+                    ${month.charAt(0).toUpperCase() + month.slice(1)}
+                    ${isPaid ? `<span style="color: #27ae60; font-size: 11px; margin-left: 5px;">✓ Payé ($${amountPaid.toFixed(2)})</span>` : ''}
                 </label>
             </div>
         `;
     });
     
-    container.innerHTML = html;
+    // Vider et remplir le conteneur
+    container.innerHTML = '';
+    container.appendChild(yearInfo);
     
+    const monthsGrid = document.createElement('div');
+    monthsGrid.style.display = 'grid';
+    monthsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(160px, 1fr))';
+    monthsGrid.style.gap = '8px';
+    monthsGrid.style.marginTop = '10px';
+    monthsGrid.innerHTML = html;
+    container.appendChild(monthsGrid);
+    
+    // Ajouter un résumé détaillé
+    if (paidMonths.size > 0) {
+        const paidMonthsList = Array.from(paidMonths).map(m => 
+            `${m.charAt(0).toUpperCase() + m.slice(1)} ($${(paymentsByMonth[m] || 0).toFixed(2)})`
+        ).join(', ');
+        
+        const summaryDiv = document.createElement('div');
+        summaryDiv.className = 'alert alert-success';
+        summaryDiv.style.marginTop = '10px';
+        summaryDiv.style.padding = '10px';
+        summaryDiv.style.fontSize = '12px';
+        summaryDiv.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <strong>Mois déjà réglés :</strong><br>
+            ${paidMonthsList}
+            <br><small>Ces mois sont automatiquement cochés et désactivés.</small>
+        `;
+        container.appendChild(summaryDiv);
+    }
+    
+    // Ajouter les événements change
     document.querySelectorAll('.month-checkbox-input:not(:disabled)').forEach(checkbox => {
         checkbox.addEventListener('change', updateTotalAmount);
     });
     
-    if (paidMonths.size > 0) {
-        const paidMonthsList = Array.from(paidMonths).join(', ');
-        const summaryDiv = document.createElement('div');
-        summaryDiv.className = 'alert alert-info';
-        summaryDiv.style.marginTop = '10px';
-        summaryDiv.style.padding = '8px';
-        summaryDiv.style.fontSize = '12px';
-        summaryDiv.innerHTML = `
-            <i class="fas fa-info-circle"></i> 
-            Mois déjà payés pour l'année scolaire ${currentSchoolYear || 'courante'}: <strong>${paidMonthsList}</strong>
-        `;
-        container.appendChild(summaryDiv);
-    }
+    updateTotalAmount();
 }
-
         function updateTotalAmount() {
             const selectedMonths = document.querySelectorAll('.month-checkbox-input:checked');
             const monthlyAmount = parseFloat(document.getElementById('onsite-monthly-amount')?.value) || 0;
@@ -6571,7 +6736,7 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
     const studentName = document.getElementById('onsite-student-name')?.value;
     const studentClass = document.getElementById('onsite-student-class')?.value;
     const studentType = document.getElementById('onsite-student-type')?.value;
-    const paymentType = document.getElementById('onsite-payment-type')?.value;
+    let paymentType = document.getElementById('onsite-payment-type')?.value;
     const paymentOther = document.getElementById('onsite-payment-other')?.value;
     const monthlyAmount = parseFloat(document.getElementById('onsite-monthly-amount')?.value);
     const totalAmount = parseFloat(document.getElementById('onsite-amount')?.value);
@@ -6581,9 +6746,18 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
         return;
     }
     
-    if (paymentType === 'Autres' && !paymentOther) {
-        showAlert("Veuillez spécifier le type de frais", "error");
-        return;
+    // Gérer le cas "Autres"
+    if (paymentType === 'Autres') {
+        if (!paymentOther) {
+            showAlert("Veuillez spécifier le type de frais", "error");
+            return;
+        }
+        paymentType = paymentOther.trim();
+        
+        // Ajouter ce nouveau type de frais à la liste s'il n'existe pas
+        if (typeof window.addFeeType === 'function' && !window.feeTypesList?.some(ft => ft.name === paymentType)) {
+            window.addFeeType(paymentType, 'general');
+        }
     }
     
     // Récupérer l'année scolaire de l'élève
@@ -6598,19 +6772,25 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
     }
     
     if (!schoolYear) {
-        // Si pas d'année scolaire, utiliser l'année en cours par défaut
         const currentYear = new Date().getFullYear();
         const currentMonth = new Date().getMonth() + 1;
         schoolYear = currentMonth >= 9 ? `${currentYear}-${currentYear + 1}` : `${currentYear - 1}-${currentYear}`;
     }
     
+    // ✅ Vérifier les mois déjà payés pour CE TYPE DE FRAIS spécifiquement
+    const paidMonthsForType = await getPaidMonthsForStudent(studentMatricule, paymentType, schoolYear);
+    
     const selectedMonths = [];
     document.querySelectorAll('.month-checkbox-input:not(:disabled):checked').forEach(checkbox => {
-        selectedMonths.push(checkbox.value);
+        const month = checkbox.value;
+        // ✅ Ne pas laisser payer un mois déjà payé pour ce type
+        if (!paidMonthsForType.has(month)) {
+            selectedMonths.push(month);
+        }
     });
     
     if (selectedMonths.length === 0) {
-        showAlert("Veuillez sélectionner au moins un mois non payé", "error");
+        showAlert("Veuillez sélectionner au moins un mois non payé pour ce type de frais", "error");
         return;
     }
     
@@ -6619,8 +6799,6 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
         showAlert("Le montant total ne correspond pas au nombre de mois sélectionnés", "error");
         return;
     }
-    
-    const finalPaymentType = paymentType === 'Autres' ? paymentOther : paymentType;
     
     try {
         if (isOnline) {
@@ -6634,13 +6812,12 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
                     studentClass: studentClass,
                     studentType: studentType,
                     month: month,
-                    paymentType: finalPaymentType,
+                    paymentType: paymentType,  // ✅ Stocker le type de frais
                     amount: monthlyAmount,
                     validatedBy: currentSecretary?.uid || 'unknown',
                     validatedAt: new Date().toISOString(),
                     createdAt: new Date().toISOString(),
                     paymentMethod: 'onsite',
-                    // AJOUT CRUCIAL : Lier le paiement à l'année scolaire
                     schoolYear: schoolYear
                 });
             });
@@ -6655,13 +6832,12 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
                     studentClass: studentClass,
                     studentType: studentType,
                     month: month,
-                    paymentType: finalPaymentType,
+                    paymentType: paymentType,  // ✅ Stocker le type de frais
                     amount: monthlyAmount,
                     validatedBy: currentSecretary?.uid || 'unknown',
                     validatedAt: new Date().toISOString(),
                     createdAt: new Date().toISOString(),
                     paymentMethod: 'onsite',
-                    // AJOUT CRUCIAL : Lier le paiement à l'année scolaire
                     schoolYear: schoolYear,
                     _temp: true
                 };
@@ -6671,10 +6847,11 @@ document.getElementById('onsite-payment-form')?.addEventListener('submit', async
             });
         }
         
-        await generateReceipt(studentName, selectedMonths, totalAmount, 'ONSITE-' + generatePaymentCode(), studentClass, finalPaymentType);
+        await generateReceipt(studentName, selectedMonths, totalAmount, 'ONSITE-' + generatePaymentCode(), studentClass, paymentType);
         
-        showAlert(`Paiement enregistré avec succès pour l'année scolaire ${schoolYear} !`, 'success');
+        showAlert(`Paiement pour "${paymentType}" enregistré avec succès pour l'année ${schoolYear} !`, 'success');
         
+        // Réinitialiser le formulaire
         e.target.reset();
         const container = document.getElementById('onsite-months-container');
         if (container) container.innerHTML = '';
@@ -6989,6 +7166,9 @@ document.getElementById('confirm-payment-btn')?.addEventListener('click', async 
 
         document.getElementById('load-fees-btn')?.addEventListener('click', async () => {
             await loadFeesData();
+// Dans loadFeesData(), avant de filtrer les paiements
+// Mettre à jour les sélecteurs si nécessaire
+updateAllFeeTypeSelectors();
         });
 
         document.getElementById('fees-search')?.addEventListener('input', (e) => {
@@ -7003,8 +7183,7 @@ document.getElementById('confirm-payment-btn')?.addEventListener('click', async 
             });
         });
 
-       // Version corrigée de loadFeesData pour afficher les élèves par année scolaire (même après réintégration)
-async function loadFeesData() {
+       async function loadFeesData() {
     const selectedStudentType = document.getElementById('fees-student-type')?.value || 'all';
     const selectedClass = document.getElementById('fees-class')?.value || '';
     const selectedMonth = document.getElementById('fees-month')?.value || 'all';
@@ -7018,7 +7197,6 @@ async function loadFeesData() {
     }
 
     try {
-        // --- ÉTAPE 1 : Récupérer les ÉLÈVES ACTIFS de l'année sélectionnée ---
         let studentsList = [];
 
         // Récupérer les élèves selon le type sélectionné
@@ -7058,77 +7236,12 @@ async function loadFeesData() {
             studentsList.push(...students.filter(s => s.status !== 'deleted' && s.schoolYear === selectedSchoolYear));
         }
 
-        // --- ÉTAPE 2 : Si on veut TOUS les élèves ou filtrer par classe, on applique le filtre ---
+        // Filtrer par classe
         if (selectedClass) {
             studentsList = studentsList.filter(s => s.class === selectedClass);
         }
 
-        // --- ÉTAPE 3 : Récupérer les SNAPSHOTS (élèves historiques) pour l'année sélectionnée ---
-        // Ceci est CRUCIAL pour afficher les élèves qui étaient dans une année antérieure
-        let historicalStudents = [];
-
-        if (isOnline) {
-            // Récupérer tous les snapshots pour l'année sélectionnée
-            const snapshotsQuery = query(
-                collection(db, 'student_snapshots'),
-                where('schoolYear', '==', selectedSchoolYear)
-            );
-            const snapshotsSnap = await getDocs(snapshotsQuery);
-            
-            // Pour chaque snapshot, on extrait les données de l'élève et on les transforme
-            snapshotsSnap.docs.forEach(doc => {
-                const snapshot = doc.data();
-                if (snapshot.snapshotData && snapshot.snapshotData.status !== 'deleted') {
-                    // On ajoute une propriété spéciale pour indiquer que c'est un snapshot
-                    historicalStudents.push({
-                        ...snapshot.snapshotData,
-                        studentType: snapshot.studentType,
-                        isHistorical: true,
-                        historicalId: doc.id,
-                        originalSchoolYear: selectedSchoolYear
-                    });
-                }
-            });
-        } else {
-            // Mode hors ligne : récupérer depuis le cache
-            const cachedSnapshots = await getCachedData('student_snapshots');
-            cachedSnapshots.forEach(snapshot => {
-                if (snapshot.schoolYear === selectedSchoolYear && snapshot.snapshotData && snapshot.snapshotData.status !== 'deleted') {
-                    historicalStudents.push({
-                        ...snapshot.snapshotData,
-                        studentType: snapshot.studentType,
-                        isHistorical: true,
-                        originalSchoolYear: selectedSchoolYear
-                    });
-                }
-            });
-        }
-
-        // --- ÉTAPE 4 : Fusionner les listes (élèves actuels + élèves historiques) ---
-        // On crée un Map pour éviter les doublons (basé sur le matricule)
-        const studentsMap = new Map();
-        
-        // Ajouter les élèves actuels
-        studentsList.forEach(student => {
-            studentsMap.set(student.matricule, student);
-        });
-        
-        // Ajouter les élèves historiques s'ils ne sont pas déjà présents
-        historicalStudents.forEach(student => {
-            if (!studentsMap.has(student.matricule)) {
-                studentsMap.set(student.matricule, student);
-            }
-        });
-
-        // Reconstruire la liste finale
-        studentsList = Array.from(studentsMap.values());
-
-        // Filtrer par classe si nécessaire (après fusion)
-        if (selectedClass) {
-            studentsList = studentsList.filter(s => s.class === selectedClass);
-        }
-
-        // --- ÉTAPE 5 : Récupérer les PAIEMENTS pour l'année sélectionnée ---
+        // Récupérer tous les paiements pour l'année sélectionnée
         let allPayments = [];
         if (isOnline) {
             const paymentsSnap = await getDocs(collection(db, 'payments'));
@@ -7137,15 +7250,15 @@ async function loadFeesData() {
             allPayments = await getCachedData('payments');
         }
 
-        // Filtrer les paiements par année scolaire sélectionnée
+        // Filtrer les paiements par année scolaire
         allPayments = allPayments.filter(p => p.schoolYear === selectedSchoolYear);
 
-        // Appliquer les autres filtres sur les paiements (mois, type)
+        // APPLIQUER LES FILTRES CORRECTEMENT
         let filteredPayments = allPayments;
 
         if (selectedMonth && selectedMonth !== 'all') {
             if (selectedMonth === 'inscription') {
-                filteredPayments = filteredPayments.filter(p => p.month === 'inscription' || p.paymentType === 'Frais d\'inscription');
+                filteredPayments = filteredPayments.filter(p => p.paymentType === 'Frais d\'inscription');
             } else {
                 filteredPayments = filteredPayments.filter(p => p.month === selectedMonth);
             }
@@ -7155,7 +7268,7 @@ async function loadFeesData() {
             filteredPayments = filteredPayments.filter(p => p.paymentType === selectedType);
         }
 
-        // --- ÉTAPE 6 : Organiser les paiements par élève ---
+        // Organiser les paiements par élève
         const studentPayments = {};
         const studentPaidMonths = {};
         const studentAmounts = {};
@@ -7163,14 +7276,44 @@ async function loadFeesData() {
         studentsList.forEach(student => {
             const studentId = student.matricule;
             const payments = filteredPayments.filter(p => p.studentId === studentId);
-
+            
             studentPayments[studentId] = payments;
             studentPaidMonths[studentId] = payments.map(p => p.month);
             studentAmounts[studentId] = payments.reduce((sum, p) => sum + (p.amount || 0), 0);
         });
 
-        // --- ÉTAPE 7 : Calculer les statistiques ---
-        const totalStudents = studentsList.length;
+        // Gérer les frais d'inscription
+        if (selectedMonth === 'inscription' || selectedType === 'Frais d\'inscription') {
+            studentsList.forEach(student => {
+                const studentId = student.matricule;
+                const enrollmentFees = student.enrollmentFees || 0;
+                
+                if (enrollmentFees > 0) {
+                    if (!studentPayments[studentId]) {
+                        studentPayments[studentId] = [];
+                        studentPaidMonths[studentId] = [];
+                        studentAmounts[studentId] = 0;
+                    }
+                    
+                    const hasInscriptionPayment = studentPayments[studentId].some(p => 
+                        p.paymentType === 'Frais d\'inscription'
+                    );
+                    
+                    if (!hasInscriptionPayment && enrollmentFees > 0) {
+                        studentPayments[studentId].push({
+                            paymentType: 'Frais d\'inscription',
+                            amount: enrollmentFees,
+                            month: 'inscription'
+                        });
+                        studentPaidMonths[studentId].push('inscription');
+                        studentAmounts[studentId] += enrollmentFees;
+                    }
+                }
+            });
+        }
+
+        // CALCULER LES STATISTIQUES AVEC LE BON FILTRAGE
+        let totalStudents = studentsList.length;
         let paidCount = 0;
         let unpaidCount = 0;
         let totalAmount = 0;
@@ -7178,29 +7321,33 @@ async function loadFeesData() {
         studentsList.forEach(student => {
             const studentId = student.matricule;
             const payments = studentPayments[studentId] || [];
-            const hasPayment = payments.length > 0;
-
-            if (hasPayment) {
-                if (selectedMonth && selectedMonth !== 'all') {
-                    const paidForSelected = studentPaidMonths[studentId]?.includes(selectedMonth);
-                    if (paidForSelected) {
-                        paidCount++;
-                        totalAmount += studentAmounts[studentId] || 0;
-                    } else {
-                        unpaidCount++;
-                    }
-                } else if (selectedType && selectedType !== 'all') {
-                    const paidForSelectedType = payments.some(p => p.paymentType === selectedType);
-                    if (paidForSelectedType) {
-                        paidCount++;
-                        totalAmount += studentAmounts[studentId] || 0;
-                    } else {
-                        unpaidCount++;
-                    }
+            const paidMonths = studentPaidMonths[studentId] || [];
+            
+            let isPaid = false;
+            
+            if (selectedMonth && selectedMonth !== 'all') {
+                // Filtre par mois
+                if (selectedMonth === 'inscription') {
+                    isPaid = payments.some(p => p.paymentType === 'Frais d\'inscription');
                 } else {
-                    paidCount++;
-                    totalAmount += studentAmounts[studentId] || 0;
+                    isPaid = paidMonths.includes(selectedMonth);
                 }
+            } 
+            else if (selectedType && selectedType !== 'all') {
+                // ✅ CORRECTION IMPORTANTE : Filtrer par TYPE DE FRAIS
+                if (selectedType === 'Frais d\'inscription') {
+                    isPaid = payments.some(p => p.paymentType === 'Frais d\'inscription');
+                } else {
+                    isPaid = payments.some(p => p.paymentType === selectedType);
+                }
+            } 
+            else {
+                isPaid = payments.length > 0;
+            }
+            
+            if (isPaid) {
+                paidCount++;
+                totalAmount += studentAmounts[studentId] || 0;
             } else {
                 unpaidCount++;
             }
@@ -7214,15 +7361,14 @@ async function loadFeesData() {
         document.getElementById('unpaid-students').textContent = unpaidCount;
         document.getElementById('payment-rate').textContent = paymentRate + '%';
 
-        // --- ÉTAPE 8 : Mettre à jour les listes (avec un indicateur pour les élèves historiques) ---
+        // Mettre à jour les listes avec les bons filtres
         updateFeesStudentsLists(studentsList, studentPayments, studentPaidMonths, studentAmounts, selectedMonth, selectedType, selectedSchoolYear);
 
     } catch (error) {
         console.error("Erreur chargement données frais:", error);
         showAlert('Erreur: ' + error.message, 'error');
     }
-} 
-
+}
 
 // Ajouter un indicateur d'année scolaire dans l'onglet gestion des frais
 function addSchoolYearIndicator() {
@@ -7257,118 +7403,126 @@ function addSchoolYearIndicator() {
 document.querySelector('.nav-menu button[data-page="manage-fees"]')?.addEventListener('click', function() {
     setTimeout(addSchoolYearIndicator, 500);
 });
-        function updateFeesStudentsLists(studentsList, studentPayments, studentPaidMonths, studentAmounts, selectedMonth, selectedType) {
-            const unpaidList = document.getElementById('unpaid-students-list');
-            const paidList = document.getElementById('paid-students-list');
-            const allList = document.getElementById('all-students-list');
-            
-            let unpaidHTML = '';
-            let paidHTML = '';
-            let allHTML = '';
-            
-            studentsList.forEach(student => {
-                const studentId = student.matricule;
-                const payments = studentPayments[studentId] || [];
-                const paidMonths = studentPaidMonths[studentId] || [];
-                const amountPaid = studentAmounts[studentId] || 0;
-                
-                const studentTypeText = student.studentType === 'secondary' ? 'Secondaire' : 
-                                      student.studentType === 'primary' ? 'Primaire' : 'Maternelle';
-                
-                let hasPaidForFilter = false;
-                
-                if (selectedMonth && selectedMonth !== 'all') {
-                    if (selectedMonth === 'inscription') {
-                        hasPaidForFilter = payments.some(p => p.paymentType === 'Frais d\'inscription');
-                    } else {
-                        hasPaidForFilter = paidMonths.includes(selectedMonth);
-                    }
-                } else if (selectedType && selectedType !== 'all') {
-                    if (selectedType === 'Frais d\'inscription') {
-                        hasPaidForFilter = payments.some(p => p.paymentType === 'Frais d\'inscription');
-                    } else {
-                        hasPaidForFilter = payments.some(p => p.paymentType === selectedType);
-                    }
-                } else {
-                    hasPaidForFilter = payments.length > 0;
-                }
-                
-                let lastPaymentDate = null;
-                let lastPaymentType = '';
-                if (payments.length > 0) {
-                    const sortedPayments = payments.sort((a, b) => 
-                        (b.validatedAt?.toDate?.() || new Date(b.validatedAt) || 0) - 
-                        (a.validatedAt?.toDate?.() || new Date(a.validatedAt) || 0)
-                    );
-                    lastPaymentDate = sortedPayments[0]?.validatedAt;
-                    lastPaymentType = sortedPayments[0]?.paymentType;
-                }
-                
-                const unpaidRowHTML = `
-                    <tr>
-                        <td>${student.matricule}</td>
-                        <td>${student.fullName}</td>
-                        <td>${studentTypeText}</td>
-                        <td>${student.class}</td>
-                        <td>${selectedType !== 'all' ? selectedType : 'Tous'}</td>
-                        <td class="currency-display">$${amountPaid.toFixed(2)}</td>
-                        <td>${selectedMonth && selectedMonth !== 'all' ? selectedMonth : 'Tous'}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
-                        </td>
-                    </tr>
-                `;
-                
-                const paidRowHTML = `
-                    <tr>
-                        <td>${student.matricule}</td>
-                        <td>${student.fullName}</td>
-                        <td>${studentTypeText}</td>
-                        <td>${student.class}</td>
-                        <td>${lastPaymentType || 'Frais scolaires'}</td>
-                        <td class="currency-display">$${amountPaid.toFixed(2)}</td>
-                        <td>${lastPaymentDate ? formatDateOnly(lastPaymentDate) : ''}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
-                        </td>
-                    </tr>
-                `;
-                
-                const allRowHTML = `
-                    <tr>
-                        <td>${student.matricule}</td>
-                        <td>${student.fullName}</td>
-                        <td>${studentTypeText}</td>
-                        <td>${student.class}</td>
-                        <td>${lastPaymentType || 'Aucun'}</td>
-                        <td class="currency-display">$${amountPaid.toFixed(2)}</td>
-                        <td>${hasPaidForFilter ? '<span class="badge badge-success">Payé</span>' : '<span class="badge badge-danger">Non payé</span>'}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
-                            ${!hasPaidForFilter ? `
-                            <button class="btn btn-success btn-sm" onclick="processPaymentForStudent('${student.matricule}', '${student.studentType}', '${student.fullName}', '${student.class}')">
-                                Payer
-                            </button>
-                            ` : ''}
-                        </td>
-                    </tr>
-
-
-                `;
-                
-                if (hasPaidForFilter) {
-                    paidHTML += paidRowHTML;
-                } else {
-                    unpaidHTML += unpaidRowHTML;
-                }
-                
-                allHTML += allRowHTML;
-            });
-            
-            if (unpaidList) unpaidList.innerHTML = unpaidHTML || '<tr><td colspan="8" style="text-align: center;">Aucun élève non payé</td></tr>';
-            if (paidList) paidList.innerHTML = paidHTML || '<tr><td colspan="8" style="text-align: center;">Aucun élève en ordre</td></tr>';
-            if (allList) allList.innerHTML = allHTML || '<tr><td colspan="8" style="text-align: center;">Aucun élève trouvé</td></tr>';
+        function updateFeesStudentsLists(studentsList, studentPayments, studentPaidMonths, studentAmounts, selectedMonth, selectedType, selectedSchoolYear) {
+    const unpaidList = document.getElementById('unpaid-students-list');
+    const paidList = document.getElementById('paid-students-list');
+    const allList = document.getElementById('all-students-list');
+    
+    let unpaidHTML = '';
+    let paidHTML = '';
+    let allHTML = '';
+    
+    studentsList.forEach(student => {
+        const studentId = student.matricule;
+        const payments = studentPayments[studentId] || [];
+        const paidMonths = studentPaidMonths[studentId] || [];
+        const amountPaid = studentAmounts[studentId] || 0;
+        
+        const studentTypeText = student.studentType === 'secondary' ? 'Secondaire' : 
+                              student.studentType === 'primary' ? 'Primaire' : 'Maternelle';
+        
+        // ✅ CORRECTION : Déterminer correctement si l'élève a payé pour le filtre sélectionné
+        let hasPaidForFilter = false;
+        
+        if (selectedMonth && selectedMonth !== 'all') {
+            if (selectedMonth === 'inscription') {
+                hasPaidForFilter = payments.some(p => p.paymentType === 'Frais d\'inscription');
+            } else {
+                hasPaidForFilter = paidMonths.includes(selectedMonth);
+            }
+        } 
+        else if (selectedType && selectedType !== 'all') {
+            // ✅ ICI : Vérifier le type de frais exact
+            if (selectedType === 'Frais d\'inscription') {
+                hasPaidForFilter = payments.some(p => p.paymentType === 'Frais d\'inscription');
+            } else {
+                hasPaidForFilter = payments.some(p => p.paymentType === selectedType);
+            }
+        } 
+        else {
+            hasPaidForFilter = payments.length > 0;
         }
+        
+        let lastPaymentDate = null;
+        let lastPaymentType = '';
+        if (payments.length > 0) {
+            const sortedPayments = payments.sort((a, b) => 
+                (b.validatedAt?.toDate?.() || new Date(b.validatedAt) || 0) - 
+                (a.validatedAt?.toDate?.() || new Date(a.validatedAt) || 0)
+            );
+            lastPaymentDate = sortedPayments[0]?.validatedAt;
+            lastPaymentType = sortedPayments[0]?.paymentType;
+        }
+        
+        const schoolYearDisplay = student.schoolYear ? `<span style="font-size: 11px; color: #3498db;"> (${student.schoolYear})</span>` : '';
+        
+        const unpaidRowHTML = `
+            <tr>
+                <td>${student.matricule}</td>
+                <td>${student.fullName}${schoolYearDisplay}</td>
+                <td>${studentTypeText}</td>
+                <td>${student.class}</td>
+                <td>${selectedType !== 'all' && selectedType ? selectedType : 'Tous les types'}</td>
+                <td class="currency-display">$${amountPaid.toFixed(2)}</td>
+                <td>${selectedMonth && selectedMonth !== 'all' ? selectedMonth : 'Tous les mois'}</td>
+                <td class="action-buttons">
+                    <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
+                </td>
+            </tr>
+        `;
+        
+        const paidRowHTML = `
+            <tr>
+                <td>${student.matricule}</td>
+                <td>${student.fullName}${schoolYearDisplay}</td>
+                <td>${studentTypeText}</td>
+                <td>${student.class}</td>
+                <td>${lastPaymentType || (selectedType !== 'all' && selectedType ? selectedType : 'Frais scolaires')}</td>
+                <td class="currency-display">$${amountPaid.toFixed(2)}</td>
+                <td>${lastPaymentDate ? formatDateOnly(lastPaymentDate) : ''}</td>
+                <td class="action-buttons">
+                    <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
+                </td>
+            </tr>
+        `;
+        
+        const allRowHTML = `
+            <tr>
+                <td>${student.matricule}</td>
+                <td>${student.fullName}${schoolYearDisplay}</td>
+                <td>${studentTypeText}</td>
+                <td>${student.class}</td>
+                <td>${lastPaymentType || 'Aucun'}</td>
+                <td class="currency-display">$${amountPaid.toFixed(2)}</td>
+                <td>${hasPaidForFilter ? '<span class="badge badge-success">Payé</span>' : '<span class="badge badge-danger">Non payé</span>'}</td>
+                <td class="action-buttons">
+                    <button class="btn btn-primary btn-sm" onclick="viewStudentDetails('${student.matricule}', '${student.studentType}')">Détails</button>
+                    ${!hasPaidForFilter ? `
+                    <button class="btn btn-success btn-sm" onclick="processPaymentForStudent('${student.matricule}', '${student.studentType}', '${student.fullName}', '${student.class}')">
+                        Payer
+                    </button>
+                    ` : ''}
+                </td>
+            </tr>
+        `;
+        
+        if (hasPaidForFilter) {
+            paidHTML += paidRowHTML;
+        } else {
+            unpaidHTML += unpaidRowHTML;
+        }
+        
+        allHTML += allRowHTML;
+    });
+    
+    const emptyMessage = selectedType && selectedType !== 'all' 
+        ? `Aucun élève ${unpaidList === document.getElementById('unpaid-students-list') ? 'non payé' : ''} pour le type "${selectedType}"`
+        : `Aucun élève trouvé pour l'année ${selectedSchoolYear}`;
+    
+    if (unpaidList) unpaidList.innerHTML = unpaidHTML || `<tr><td colspan="8" style="text-align: center;">${emptyMessage}</td></tr>`;
+    if (paidList) paidList.innerHTML = paidHTML || `<tr><td colspan="8" style="text-align: center;">Aucun élève en ordre pour ce filtre</td></tr>`;
+    if (allList) allList.innerHTML = allHTML || `<tr><td colspan="8" style="text-align: center;">Aucun élève trouvé</td></tr>`;
+}
 
 // Créer les collections nécessaires si elles n'existent pas
 async function initializeArchiveCollections() {
@@ -13532,9 +13686,11 @@ async function loadAvailableSchoolYearsForFees() {
     } catch (error) {
         console.error('Erreur chargement années scolaires:', error);
         yearSelect.innerHTML = '<option value="">-- Sélectionner une année --</option>';
-        yearSelect.innerHTML += '<option value="2023-2024">2023-2024</option>';
-        yearSelect.innerHTML += '<option value="2024-2025">2024-2025</option>';
         yearSelect.innerHTML += '<option value="2025-2026">2025-2026</option>';
+        yearSelect.innerHTML += '<option value="2026-2027">2026-2027</option>';
+        yearSelect.innerHTML += '<option value="2027-2028">2027-2028</option>';
+
+yearSelect.innerHTML += '<option value="2028-2029">2028-2029</option>';
     }
 }
 
@@ -13961,10 +14117,1227 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// ============================================
+// GESTION DES TYPES DE FRAIS - VERSION FONCTIONNELLE
+// ============================================
+
+// Variable globale pour stocker les types
+let feeTypesList = [];
+let feeTypesInitialized = false;
+
+/**
+ * Initialise la collection des types de frais dans Firestore
+ */
+async function initFeeTypesCollection() {
+    try {
+        // Créer un document de test pour s'assurer que la collection existe
+        const testRef = doc(db, 'fee_types', '_test');
+        await setDoc(testRef, { test: true, createdAt: new Date().toISOString() });
+        
+        // Supprimer le document de test
+        await deleteDoc(testRef);
+        
+        console.log('✅ Collection fee_types prête');
+        return true;
+    } catch (error) {
+        console.error('❌ Erreur initialisation:', error);
+        return false;
+    }
+}
+
+/**
+ * Charge tous les types de frais
+ */
+async function loadFeeTypes() {
+    try {
+        console.log('📡 Chargement des types de frais...');
+        
+        // Afficher le loader
+        const container = document.getElementById('fee-types-list-container');
+        if (container) {
+            container.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="loading-spinner" style="width: 30px; height: 30px; margin: 0 auto 10px;"></div><p>Chargement des types de frais...</p></div>';
+        }
+        
+        let types = [];
+        
+        if (isOnline) {
+            // Récupérer depuis Firestore
+            const snapshot = await getDocs(collection(db, 'fee_types'));
+            types = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            console.log(`✅ ${types.length} types chargés depuis Firestore`);
+        } else {
+            // Récupérer depuis le cache
+            types = await getCachedData('fee_types');
+            console.log(`📦 ${types.length} types chargés depuis le cache`);
+        }
+        
+        // S'assurer que les types fixes existent
+        const fixedTypes = [
+            { name: 'Frais d\'inscription', category: 'inscription', isFixed: true },
+            { name: 'Frais de réintégration', category: 'reintegration', isFixed: true }
+        ];
+        
+        for (const fixed of fixedTypes) {
+            if (!types.some(t => t.name === fixed.name)) {
+                const newFixed = {
+                    ...fixed,
+                    id: `fixed_${Date.now()}_${Math.random()}`,
+                    createdAt: new Date().toISOString()
+                };
+                types.push(newFixed);
+                
+                // Sauvegarder dans Firestore si en ligne
+                if (isOnline) {
+                    await setDoc(doc(db, 'fee_types', newFixed.id), newFixed);
+                }
+            }
+        }
+        
+        feeTypesList = types;
+        feeTypesInitialized = true;
+        
+        // Mettre en cache
+        await cacheMultipleData('fee_types', feeTypesList);
+        
+        // Mettre à jour l'affichage
+        displayFeeTypesList();
+        
+        // Mettre à jour tous les sélecteurs
+        updateAllFeeTypeSelectors();
+        
+        return feeTypesList;
+        
+    } catch (error) {
+        console.error('❌ Erreur chargement:', error);
+        
+        // Utiliser des valeurs par défaut
+        feeTypesList = [
+            { id: 'default_1', name: 'Frais scolaires', category: 'mensuel', isFixed: false, createdAt: new Date().toISOString() },
+            { id: 'default_2', name: 'Frais de transport', category: 'mensuel', isFixed: false, createdAt: new Date().toISOString() },
+            { id: 'default_3', name: 'Frais de cantine', category: 'mensuel', isFixed: false, createdAt: new Date().toISOString() },
+            { id: 'fixed_1', name: 'Frais d\'inscription', category: 'inscription', isFixed: true, createdAt: new Date().toISOString() },
+            { id: 'fixed_2', name: 'Frais de réintégration', category: 'reintegration', isFixed: true, createdAt: new Date().toISOString() }
+        ];
+        
+        displayFeeTypesList();
+        updateAllFeeTypeSelectors();
+        
+        return feeTypesList;
+    }
+}
+
+/**
+ * Affiche la liste des types de frais
+ */
+async function displayFeeTypesList() {
+    const container = document.getElementById('fee-types-list-container');
+    if (!container) return;
+    
+    if (!feeTypesInitialized) {
+        container.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="loading-spinner" style="width: 30px; height: 30px; margin: 0 auto 10px;"></div><p>Chargement...</p></div>';
+        return;
+    }
+    
+    if (feeTypesList.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
+                <i class="fas fa-tags" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+                <p>Aucun type de frais créé pour le moment.</p>
+                <p>Utilisez le formulaire ci-dessus pour en créer.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Compter les utilisations
+    const usageCounts = await getFeeTypeUsageStats();
+    
+    let html = '<div class="table-container"><table class="table"><thead><tr>';
+    html += '<th>Nom</th><th>Catégorie</th><th>Date création</th><th>Utilisations</th><th>Actions</th>';
+    html += '</tr></thead><tbody>';
+    
+    for (const feeType of feeTypesList) {
+        const isFixed = feeType.isFixed === true;
+        const usageCount = usageCounts[feeType.name] || 0;
+        const createdAt = feeType.createdAt ? new Date(feeType.createdAt).toLocaleDateString('fr-FR') : 'N/A';
+        
+        const categoryIcon = feeType.category === 'mensuel' ? '📅' : feeType.category === 'ponctuel' ? '⚡' : '📌';
+        const categoryText = feeType.category === 'mensuel' ? 'Mensuel' : feeType.category === 'ponctuel' ? 'Ponctuel' : 'Général';
+        
+        html += `<tr>
+            <td><strong>${escapeHtml(feeType.name)}</strong> ${isFixed ? '<span class="badge badge-secondary">🔒 Fixe</span>' : ''}</td>
+            <td>${categoryIcon} ${categoryText}</td>
+            <td>${createdAt}</td>
+            <td><span class="badge ${usageCount > 0 ? 'badge-info' : 'badge-secondary'}">${usageCount}</span></td>
+            <td class="action-buttons">`;
+        
+        if (!isFixed) {
+            html += `<button class="btn btn-warning btn-sm" onclick="editFeeTypeItem('${feeType.id}', '${escapeHtml(feeType.name).replace(/'/g, "\\'")}')">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteFeeTypeItem('${feeType.id}', '${escapeHtml(feeType.name).replace(/'/g, "\\'")}')" 
+                        ${usageCount > 0 ? 'disabled title="Ce type est utilisé dans ${usageCount} paiement(s)"' : ''}>
+                        <i class="fas fa-trash"></i> Supprimer
+                    </button>`;
+        } else {
+            html += '<span class="text-muted"><i class="fas fa-lock"></i> Non modifiable</span>';
+        }
+        
+        html += `</td></tr>`;
+    }
+    
+    html += '</tbody></table></div>';
+    container.innerHTML = html;
+}
+
+/**
+ * Compte les utilisations de chaque type de frais
+ */
+async function getFeeTypeUsageStats() {
+    const stats = {};
+    
+    try {
+        let payments = [];
+        
+        if (isOnline) {
+            const snapshot = await getDocs(collection(db, 'payments'));
+            payments = snapshot.docs.map(doc => doc.data());
+        } else {
+            payments = await getCachedData('payments');
+        }
+        
+        payments.forEach(payment => {
+            const type = payment.paymentType;
+            if (type) {
+                stats[type] = (stats[type] || 0) + 1;
+            }
+        });
+        
+        // Compter aussi les frais d'inscription
+        const inscriptionCount = await countInscriptionPayments();
+        if (inscriptionCount > 0) {
+            stats['Frais d\'inscription'] = (stats['Frais d\'inscription'] || 0) + inscriptionCount;
+        }
+        
+    } catch (error) {
+        console.error('Erreur comptage:', error);
+    }
+    
+    return stats;
+}
+
+/**
+ * Compte les paiements d'inscription
+ */
+async function countInscriptionPayments() {
+    let count = 0;
+    const collections = ['students', 'primary_students', 'kindergarten_students'];
+    
+    for (const col of collections) {
+        try {
+            let students = [];
+            if (isOnline) {
+                const snapshot = await getDocs(collection(db, col));
+                students = snapshot.docs.map(doc => doc.data());
+            } else {
+                students = await getCachedData(col);
+            }
+            count += students.filter(s => s.enrollmentFees > 0).length;
+        } catch (e) {
+            console.error('Erreur comptage inscription:', e);
+        }
+    }
+    
+    return count;
+}
+
+/**
+ * AJOUTER UN NOUVEAU TYPE DE FRAIS - FONCTION PRINCIPALE
+ */
+async function addNewFeeType(name, category) {
+    if (!name || !name.trim()) {
+        showAlert('❌ Veuillez entrer un nom valide', 'error');
+        return false;
+    }
+    
+    const trimmedName = name.trim();
+    
+    // Vérifier si le type existe déjà
+    if (feeTypesList.some(ft => ft.name.toLowerCase() === trimmedName.toLowerCase())) {
+        showAlert(`❌ Le type "${trimmedName}" existe déjà`, 'error');
+        return false;
+    }
+    
+    const newFeeType = {
+        name: trimmedName,
+        category: category || 'mensuel',
+        isFixed: false,
+        createdAt: new Date().toISOString()
+    };
+    
+    try {
+        let savedId;
+        
+        if (isOnline) {
+            // Ajouter à Firestore
+            const docRef = await addDoc(collection(db, 'fee_types'), newFeeType);
+            savedId = docRef.id;
+            console.log('✅ Type ajouté à Firestore, ID:', savedId);
+        } else {
+            // Mode hors ligne
+            savedId = `temp_${Date.now()}`;
+            await addToOfflineQueue('add', 'fee_types', newFeeType);
+            console.log('📦 Type ajouté à la file hors ligne');
+        }
+        
+        // Ajouter à la liste locale
+        const savedType = { ...newFeeType, id: savedId };
+        feeTypesList.push(savedType);
+        
+        // Sauvegarder en cache
+        await cacheData('fee_types', savedType);
+        
+        // Mettre à jour l'affichage
+        await displayFeeTypesList();
+        
+        // Mettre à jour tous les sélecteurs
+        updateAllFeeTypeSelectors();
+        
+        showAlert(`✅ Type de frais "${trimmedName}" créé avec succès !`, 'success');
+        return true;
+        
+    } catch (error) {
+        console.error('❌ Erreur création:', error);
+        showAlert(`❌ Erreur: ${error.message}`, 'error');
+        return false;
+    }
+}
+
+/**
+ * Modifier un type de frais
+ */
+window.editFeeTypeItem = async function(id, oldName) {
+    const feeType = feeTypesList.find(ft => ft.id === id);
+    if (!feeType) {
+        showAlert('Type non trouvé', 'error');
+        return;
+    }
+    
+    if (feeType.isFixed) {
+        showAlert('❌ Les types fixes ne peuvent pas être modifiés', 'error');
+        return;
+    }
+    
+    const newName = prompt('Nouveau nom :', feeType.name);
+    if (!newName || newName === feeType.name) return;
+    
+    const trimmedNewName = newName.trim();
+    
+    if (feeTypesList.some(ft => ft.name.toLowerCase() === trimmedNewName.toLowerCase() && ft.id !== id)) {
+        showAlert('❌ Ce nom existe déjà', 'error');
+        return;
+    }
+    
+    try {
+        if (isOnline) {
+            await updateDoc(doc(db, 'fee_types', id), {
+                name: trimmedNewName,
+                updatedAt: new Date().toISOString()
+            });
+        }
+        
+        feeType.name = trimmedNewName;
+        await cacheData('fee_types', feeType);
+        
+        await displayFeeTypesList();
+        updateAllFeeTypeSelectors();
+        
+        showAlert(`✅ Type modifié : "${oldName}" → "${trimmedNewName}"`, 'success');
+        
+    } catch (error) {
+        console.error('Erreur modification:', error);
+        showAlert('❌ Erreur: ' + error.message, 'error');
+    }
+};
+
+/**
+ * Supprimer un type de frais
+ */
+window.deleteFeeTypeItem = async function(id, name) {
+    const feeType = feeTypesList.find(ft => ft.id === id);
+    if (!feeType) return;
+    
+    if (feeType.isFixed) {
+        showAlert('❌ Les types fixes ne peuvent pas être supprimés', 'error');
+        return;
+    }
+    
+    const usageStats = await getFeeTypeUsageStats();
+    if (usageStats[name] > 0) {
+        showAlert(`❌ Impossible de supprimer "${name}" - utilisé dans ${usageStats[name]} paiement(s)`, 'warning');
+        return;
+    }
+    
+    if (!confirm(`⚠️ Supprimer "${name}" définitivement ?`)) return;
+    
+    try {
+        if (isOnline) {
+            await deleteDoc(doc(db, 'fee_types', id));
+        }
+        
+        feeTypesList = feeTypesList.filter(ft => ft.id !== id);
+        await displayFeeTypesList();
+        updateAllFeeTypeSelectors();
+        
+        showAlert(`✅ Type "${name}" supprimé`, 'success');
+        
+    } catch (error) {
+        console.error('Erreur suppression:', error);
+        showAlert('❌ Erreur: ' + error.message, 'error');
+    }
+};
+
+function updateAllFeeTypeSelectors() {
+    const selectors = ['onsite-payment-type', 'communique-fee-type', 'fees-type', 'report-fees-type'];
+    
+    for (const selectorId of selectors) {
+        const select = document.getElementById(selectorId);
+        if (!select) continue;
+        
+        const currentValue = select.value;
+        select.innerHTML = '';
+        
+        // Option par défaut
+        if (selectorId === 'fees-type' || selectorId === 'report-fees-type') {
+            select.innerHTML += '<option value="all">Tous les types</option>';
+        } else {
+            select.innerHTML += '<option value="">-- Sélectionner --</option>';
+        }
+        
+        // Ajouter les types
+        if (window.feeTypesList && window.feeTypesList.length > 0) {
+            window.feeTypesList.forEach(feeType => {
+                // Pour les filtres, inclure tous
+                if (selectorId === 'fees-type' || selectorId === 'report-fees-type') {
+                    select.innerHTML += `<option value="${escapeHtml(feeType.name)}">${escapeHtml(feeType.name)}</option>`;
+                }
+                // Pour les paiements, exclure les frais d'inscription
+                else if (feeType.name !== 'Frais d\'inscription' && feeType.name !== 'Frais de réintégration') {
+                    select.innerHTML += `<option value="${escapeHtml(feeType.name)}">${escapeHtml(feeType.name)}</option>`;
+                }
+            });
+        } else {
+            // Types par défaut
+            const defaultTypes = ['Frais scolaires', 'Frais de transport', 'Frais de cantine'];
+            defaultTypes.forEach(type => {
+                if (selectorId === 'fees-type' || selectorId === 'report-fees-type') {
+                    select.innerHTML += `<option value="${type}">${type}</option>`;
+                } else if (type !== 'Frais d\'inscription') {
+                    select.innerHTML += `<option value="${type}">${type}</option>`;
+                }
+            });
+        }
+        
+        // Option "Autres"
+        if (selectorId === 'onsite-payment-type' || selectorId === 'communique-fee-type') {
+            select.innerHTML += '<option value="Autres">Autres (spécifier)</option>';
+        }
+        
+        // Restaurer la valeur si possible
+        if (currentValue && Array.from(select.options).some(opt => opt.value === currentValue)) {
+            select.value = currentValue;
+        }
+    }
+}
+// Gestionnaire du formulaire d'ajout
+document.getElementById('add-fee-type-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('new-fee-type-name');
+    const categorySelect = document.getElementById('new-fee-type-category');
+    const submitBtn = document.getElementById('add-fee-type-btn');
+    
+    if (!nameInput || !nameInput.value.trim()) {
+        showAlert('❌ Veuillez entrer un nom', 'error');
+        return;
+    }
+    
+    const name = nameInput.value.trim();
+    const category = categorySelect?.value || 'mensuel';
+    
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Création...';
+    }
+    
+    const success = await addNewFeeType(name, category);
+    
+    if (success) {
+        nameInput.value = '';
+    }
+    
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-plus"></i> Créer';
+    }
+});
+
+// Fonction utilitaire
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', async function() {
+    // Attendre que l'utilisateur soit connecté
+    setTimeout(async () => {
+        if (currentSecretary && currentSecretary.uid) {
+            await initializeFeeTypesCollection();
+            await loadFeeTypes();
+        }
+    }, 3000);
+});
+
+
+
+</script>
+<script>
+// ============================================
+// SOLUTION COMPLÈTE POUR LA GESTION DES TYPES DE FRAIS
+// ============================================
+
+// Attendre que le DOM soit chargé
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔄 Initialisation du module de gestion des frais...');
+    
+    // Initialiser la variable globale si elle n'existe pas
+    if (typeof window.feeTypesList === 'undefined') {
+        window.feeTypesList = [];
+    }
+    
+    // Récupérer les types de frais existants
+    async function loadExistingFeeTypes() {
+        try {
+            console.log('📡 Chargement des types existants...');
+            
+            // Types par défaut
+            const defaultTypes = [
+                { id: 'default_1', name: 'Frais scolaires', category: 'mensuel', isFixed: false },
+                { id: 'default_2', name: 'Frais de transport', category: 'mensuel', isFixed: false },
+                { id: 'default_3', name: 'Frais de cantine', category: 'mensuel', isFixed: false },
+                { id: 'fixed_1', name: 'Frais d\'inscription', category: 'inscription', isFixed: true },
+                { id: 'fixed_2', name: 'Frais de réintégration', category: 'reintegration', isFixed: true }
+            ];
+            
+            // Vérifier si des types sont déjà dans localStorage
+            const saved = localStorage.getItem('feeTypesList');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && parsed.length > 0) {
+                        window.feeTypesList = parsed;
+                        console.log('📦 Types chargés depuis localStorage:', window.feeTypesList.length);
+                        displayFeeTypes();
+                        updateAllSelectors();
+                        return;
+                    }
+                } catch(e) {}
+            }
+            
+            // Sinon utiliser les types par défaut
+            window.feeTypesList = defaultTypes;
+            localStorage.setItem('feeTypesList', JSON.stringify(defaultTypes));
+            console.log('✅ Types par défaut chargés:', window.feeTypesList.length);
+            
+            displayFeeTypes();
+            updateAllSelectors();
+            
+        } catch (error) {
+            console.error('❌ Erreur chargement:', error);
+            window.feeTypesList = [
+                { id: 'default_1', name: 'Frais scolaires', category: 'mensuel', isFixed: false },
+                { id: 'default_2', name: 'Frais de transport', category: 'mensuel', isFixed: false },
+                { id: 'default_3', name: 'Frais de cantine', category: 'mensuel', isFixed: false },
+                { id: 'fixed_1', name: 'Frais d\'inscription', category: 'inscription', isFixed: true }
+            ];
+            displayFeeTypes();
+            updateAllSelectors();
+        }
+    }
+    
+    // Afficher la liste des types de frais
+    function displayFeeTypes() {
+        const container = document.getElementById('fee-types-list-container');
+        if (!container) {
+            console.warn('⚠️ Container fee-types-list-container non trouvé');
+            return;
+        }
+        
+        if (!window.feeTypesList || window.feeTypesList.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <i class="fas fa-tags" style="font-size: 48px; color: #ccc;"></i>
+                    <p>Aucun type de frais. Créez-en un !</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '<div class="table-container"><table class="table" style="width:100%"><thead><tr>';
+        html += '<th>Nom</th><th>Catégorie</th><th>Type</th><th>Actions</th>';
+        html += '</tr></thead><tbody>';
+        
+        for (const feeType of window.feeTypesList) {
+            const categoryText = feeType.category === 'mensuel' ? '📅 Mensuel' : 
+                                feeType.category === 'ponctuel' ? '⚡ Ponctuel' : '📌 Général';
+            
+            const isFixed = feeType.isFixed === true;
+            const fixedBadge = isFixed ? ' <span class="badge badge-secondary">🔒 Fixe</span>' : '';
+            
+            html += `<tr>
+                <td><strong>${escapeHtml(feeType.name)}</strong>${fixedBadge}</td>
+                <td>${categoryText}</td>
+                <td>${isFixed ? 'Système' : 'Personnalisé'}</td>
+                <td class="action-buttons">`;
+            
+            if (!isFixed) {
+                html += `<button class="btn btn-warning btn-sm" onclick="editFeeType('${feeType.id}', '${escapeHtml(feeType.name).replace(/'/g, "\\'")}')">
+                            <i class="fas fa-edit"></i> Modifier
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteFeeType('${feeType.id}', '${escapeHtml(feeType.name).replace(/'/g, "\\'")}')">
+                            <i class="fas fa-trash"></i> Supprimer
+                        </button>`;
+            } else {
+                html += '<span class="text-muted"><i class="fas fa-lock"></i> Non modifiable</span>';
+            }
+            
+            html += `</td></tr>`;
+        }
+        
+        html += '</tbody></table></div>';
+        container.innerHTML = html;
+    }
+    
+    // Mettre à jour tous les sélecteurs de types de frais
+    function updateAllSelectors() {
+        const selectors = ['onsite-payment-type', 'communique-fee-type', 'fees-type', 'report-fees-type'];
+        
+        for (const selectorId of selectors) {
+            const select = document.getElementById(selectorId);
+            if (!select) continue;
+            
+            const currentValue = select.value;
+            select.innerHTML = '';
+            
+            // Option par défaut
+            if (selectorId === 'fees-type' || selectorId === 'report-fees-type') {
+                select.innerHTML += '<option value="all">Tous les types</option>';
+            } else {
+                select.innerHTML += '<option value="">-- Sélectionner --</option>';
+            }
+            
+            // Ajouter les types (sauf frais d'inscription pour les paiements normaux)
+            for (const feeType of window.feeTypesList) {
+                if (selectorId === 'fees-type' || selectorId === 'report-fees-type') {
+                    select.innerHTML += `<option value="${escapeHtml(feeType.name)}">${escapeHtml(feeType.name)}</option>`;
+                } else if (feeType.name !== 'Frais d\'inscription' && feeType.name !== 'Frais de réintégration') {
+                    select.innerHTML += `<option value="${escapeHtml(feeType.name)}">${escapeHtml(feeType.name)}</option>`;
+                }
+            }
+            
+            // Option "Autres"
+            if (selectorId === 'onsite-payment-type' || selectorId === 'communique-fee-type') {
+                select.innerHTML += '<option value="Autres">Autres (spécifier)</option>';
+            }
+            
+            // Restaurer la valeur si possible
+            if (currentValue && Array.from(select.options).some(opt => opt.value === currentValue)) {
+                select.value = currentValue;
+            }
+        }
+        
+        console.log('✅ Tous les sélecteurs mis à jour');
+    }
+    
+    // Sauvegarder dans localStorage
+    function saveToLocalStorage() {
+        localStorage.setItem('feeTypesList', JSON.stringify(window.feeTypesList));
+        console.log('💾 Types sauvegardés dans localStorage');
+    }
+    
+    // AJOUTER UN TYPE DE FRAIS
+    window.addFeeType = function(name, category) {
+        console.log('➕ addFeeType appelé avec:', name, category);
+        
+        if (!name || !name.trim()) {
+            showAlert('❌ Veuillez entrer un nom valide', 'error');
+            return false;
+        }
+        
+        const trimmedName = name.trim();
+        
+        // Vérifier si le type existe déjà
+        if (window.feeTypesList.some(ft => ft.name.toLowerCase() === trimmedName.toLowerCase())) {
+            showAlert(`❌ Le type "${trimmedName}" existe déjà`, 'error');
+            return false;
+        }
+        
+        // Créer le nouveau type
+        const newId = 'type_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+        const newFeeType = {
+            id: newId,
+            name: trimmedName,
+            category: category || 'mensuel',
+            isFixed: false,
+            createdAt: new Date().toISOString()
+        };
+        
+        // Ajouter à la liste
+        window.feeTypesList.push(newFeeType);
+        
+        // Sauvegarder
+        saveToLocalStorage();
+        
+        // Rafraîchir l'affichage
+        displayFeeTypes();
+        updateAllSelectors();
+        
+        showAlert(`✅ Type "${trimmedName}" créé avec succès !`, 'success');
+        console.log('✅ Type ajouté:', newFeeType);
+        
+        return true;
+    };
+    
+    // MODIFIER UN TYPE DE FRAIS
+    window.editFeeType = function(id, oldName) {
+        const feeType = window.feeTypesList.find(ft => ft.id === id);
+        if (!feeType) {
+            showAlert('Type non trouvé', 'error');
+            return;
+        }
+        
+        if (feeType.isFixed) {
+            showAlert('❌ Les types fixes ne peuvent pas être modifiés', 'error');
+            return;
+        }
+        
+        const newName = prompt('Nouveau nom :', feeType.name);
+        if (!newName || newName === feeType.name) return;
+        
+        const trimmedNewName = newName.trim();
+        
+        if (window.feeTypesList.some(ft => ft.name.toLowerCase() === trimmedNewName.toLowerCase() && ft.id !== id)) {
+            showAlert('❌ Ce nom existe déjà', 'error');
+            return;
+        }
+        
+        feeType.name = trimmedNewName;
+        feeType.updatedAt = new Date().toISOString();
+        
+        saveToLocalStorage();
+        displayFeeTypes();
+        updateAllSelectors();
+        
+        showAlert(`✅ Type modifié : "${oldName}" → "${trimmedNewName}"`, 'success');
+    };
+    
+    // SUPPRIMER UN TYPE DE FRAIS
+    window.deleteFeeType = function(id, name) {
+        const feeType = window.feeTypesList.find(ft => ft.id === id);
+        if (!feeType) return;
+        
+        if (feeType.isFixed) {
+            showAlert('❌ Les types fixes ne peuvent pas être supprimés', 'error');
+            return;
+        }
+        
+        if (!confirm(`⚠️ Supprimer définitivement "${name}" ?`)) return;
+        
+        const index = window.feeTypesList.findIndex(ft => ft.id === id);
+        if (index !== -1) {
+            window.feeTypesList.splice(index, 1);
+            saveToLocalStorage();
+            displayFeeTypes();
+            updateAllSelectors();
+            showAlert(`✅ Type "${name}" supprimé`, 'success');
+        }
+    };
+    
+    // Gestionnaire du formulaire d'ajout
+    function setupAddFeeTypeForm() {
+        const form = document.getElementById('add-fee-type-form');
+        if (!form) {
+            console.warn('⚠️ Formulaire add-fee-type-form non trouvé');
+            return;
+        }
+        
+        // Supprimer les anciens gestionnaires
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+        
+        // Ajouter le nouveau gestionnaire
+        newForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const nameInput = document.getElementById('new-fee-type-name');
+            const categorySelect = document.getElementById('new-fee-type-category');
+            const submitBtn = document.getElementById('add-fee-type-btn');
+            
+            if (!nameInput || !nameInput.value.trim()) {
+                showAlert('❌ Veuillez entrer un nom', 'error');
+                return;
+            }
+            
+            const name = nameInput.value.trim();
+            const category = categorySelect ? categorySelect.value : 'mensuel';
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Création...';
+                
+                const success = window.addFeeType(name, category);
+                
+                if (success) {
+                    nameInput.value = '';
+                }
+                
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }, 1000);
+            } else {
+                window.addFeeType(name, category);
+                nameInput.value = '';
+            }
+        });
+        
+        console.log('✅ Formulaire de création configuré');
+    }
+    
+    // Initialiser au chargement
+    loadExistingFeeTypes();
+    setupAddFeeTypeForm();
+    
+    // Si la page "Gestion des types de frais" est ouverte, actualiser
+    const manageFeeTypesBtn = document.querySelector('.nav-menu button[data-page="manage-fee-types"]');
+    if (manageFeeTypesBtn) {
+        manageFeeTypesBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                displayFeeTypes();
+                updateAllSelectors();
+            }, 100);
+        });
+    }
+    
+    // Fonction utilitaire
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    console.log('✅ Module de gestion des types de frais initialisé');
+});
+
+// Vérification périodique
+setInterval(() => {
+    if (document.getElementById('manage-fee-types-page') && 
+        document.getElementById('manage-fee-types-page').classList.contains('active')) {
+        if (typeof window.feeTypesList !== 'undefined' && window.feeTypesList.length > 0) {
+            // Tout est bon
+        }
+    }
+}, 3000);
+// Ajouter un gestionnaire d'événement pour le changement de type de frais
+document.getElementById('onsite-payment-type')?.addEventListener('change', async function() {
+    const studentMatricule = document.getElementById('onsite-student-id')?.value.trim();
+    const studentType = document.getElementById('onsite-student-type')?.value;
+    const paymentType = this.value;
+    
+    // Gérer le champ "Autres"
+    const otherSpec = document.getElementById('onsite-payment-other');
+    if (otherSpec) {
+        if (paymentType === 'Autres') {
+            otherSpec.style.display = 'block';
+            otherSpec.required = true;
+        } else {
+            otherSpec.style.display = 'none';
+            otherSpec.required = false;
+            otherSpec.value = '';
+        }
+    }
+    
+    // Recharger les mois si on a un élève sélectionné
+    if (studentMatricule && studentType) {
+        // Pour "Autres", on ne filtre pas par type
+        const actualPaymentType = paymentType === 'Autres' ? null : paymentType;
+        await generateMonthCheckboxes(studentMatricule, studentType, actualPaymentType);
+    }
+});
+
+// Variable pour stocker l'état d'affichage des détails
+let paymentDetailsVisible = false;
+
+/**
+ * Affiche le statut complet des paiements d'un élève
+ * @param {string} studentMatricule - Matricule de l'élève
+ * @param {string} studentType - Type d'élève
+ */
+async function displayStudentPaymentStatus(studentMatricule, studentType) {
+    const container = document.getElementById('payment-status-container');
+    const summaryEl = document.getElementById('payment-summary');
+    const detailsEl = document.getElementById('payment-details');
+    const progressEl = document.getElementById('payment-progress');
+    const yearSpan = document.getElementById('status-school-year');
+    
+    if (!container || !summaryEl || !detailsEl || !progressEl) return;
+    
+    try {
+        // Récupérer les données de l'élève
+        let studentData = null;
+        let collectionName = studentType === 'secondary' ? 'students' :
+                           studentType === 'primary' ? 'primary_students' : 'kindergarten_students';
+        
+        if (isOnline) {
+            const docRef = doc(db, collectionName, studentMatricule);
+            const studentSnap = await getDoc(docRef);
+            if (studentSnap.exists()) studentData = studentSnap.data();
+        } else {
+            const cached = await getCachedData(collectionName);
+            studentData = cached.find(s => s.matricule === studentMatricule);
+        }
+        
+        if (!studentData) {
+            container.classList.add('hidden');
+            return;
+        }
+        
+        const schoolYear = studentData.schoolYear || 'Année en cours';
+        if (yearSpan) yearSpan.textContent = schoolYear;
+        
+        // Récupérer tous les paiements de l'élève pour l'année scolaire actuelle
+        let payments = [];
+        if (isOnline) {
+            const paymentsQuery = query(
+                collection(db, 'payments'),
+                where('studentId', '==', studentMatricule),
+                where('schoolYear', '==', studentData.schoolYear || '')
+            );
+            const paymentsSnap = await getDocs(paymentsQuery);
+            payments = paymentsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        } else {
+            payments = await getCachedData('payments');
+            payments = payments.filter(p => 
+                p.studentId === studentMatricule && 
+                p.schoolYear === studentData.schoolYear
+            );
+        }
+        
+        // Définir les mois de l'année scolaire
+        const months = [
+            'septembre', 'octobre', 'novembre', 'décembre',
+            'janvier', 'février', 'mars', 'avril', 'mai', 'juin'
+        ];
+        
+        // Grouper les paiements par type de frais
+        const paymentsByType = {};
+        const paidMonthsByType = {};
+        
+        payments.forEach(payment => {
+            const type = payment.paymentType || 'Frais scolaires';
+            if (!paymentsByType[type]) {
+                paymentsByType[type] = [];
+                paidMonthsByType[type] = new Set();
+            }
+            paymentsByType[type].push(payment);
+            if (payment.month && payment.month !== 'inscription') {
+                paidMonthsByType[type].add(payment.month);
+            }
+        });
+        
+        // Vérifier si l'élève a payé les frais d'inscription
+        const hasInscription = payments.some(p => p.paymentType === 'Frais d\'inscription');
+        const inscriptionAmount = studentData.enrollmentFees || 0;
+        
+        // Calculer les statistiques par type de frais
+        let htmlSummary = '';
+        let htmlDetails = '';
+        let totalMonthsPaid = 0;
+        let totalMonthsExpected = 0;
+        let totalTypes = 0;
+        
+        // Ajouter les frais d'inscription
+        htmlSummary += `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span><i class="fas fa-check-circle" style="color: ${hasInscription ? '#27ae60' : '#e74c3c'}"></i> 
+                    <strong>Frais d'inscription</strong>
+                </span>
+                <span class="${hasInscription ? 'text-success' : 'text-danger'}">
+                    ${hasInscription ? 'Payé' : 'Non payé'}
+                    ${inscriptionAmount > 0 ? ` ($${inscriptionAmount.toFixed(2)})` : ''}
+                </span>
+            </div>
+        `;
+        
+        htmlDetails += `
+            <div class="fee-type-card" style="margin-bottom: 15px; border-left: 3px solid ${hasInscription ? '#27ae60' : '#e74c3c'}; padding-left: 10px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <strong><i class="fas fa-graduation-cap"></i> Frais d'inscription</strong>
+                    <span class="${hasInscription ? 'text-success' : 'text-danger'}">
+                        ${hasInscription ? '✅ Payé' : '❌ Non payé'}
+                        ${inscriptionAmount > 0 ? ` ($${inscriptionAmount.toFixed(2)})` : ''}
+                    </span>
+                </div>
+                ${!hasInscription && inscriptionAmount > 0 ? `
+                    <div style="margin-top: 5px;">
+                        <button class="btn btn-success btn-sm" onclick="processInscriptionPayment('${studentMatricule}', '${studentType}', '${studentData.fullName}', '${studentData.class}', ${inscriptionAmount})">
+                            <i class="fas fa-money-bill-wave"></i> Payer maintenant
+                        </button>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        
+        // Analyser chaque type de frais
+        const feeTypes = [...new Set([...Object.keys(paymentsByType), ...getDefaultFeeTypes()])];
+        
+        for (const feeType of feeTypes) {
+            const paidMonths = paidMonthsByType[feeType] || new Set();
+            const isMonthlyFee = !feeType.includes('Frais d\'inscription') && !feeType.includes('Frais de réintégration');
+            
+            if (isMonthlyFee) {
+                const paidCount = paidMonths.size;
+                const totalExpected = months.length;
+                totalMonthsPaid += paidCount;
+                totalMonthsExpected += totalExpected;
+                totalTypes++;
+                
+                const percentage = totalExpected > 0 ? (paidCount / totalExpected * 100).toFixed(1) : 0;
+                const color = percentage >= 100 ? '#27ae60' : percentage >= 70 ? '#f39c12' : '#e74c3c';
+                
+                htmlSummary += `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span><i class="fas fa-chart-simple"></i> <strong>${feeType}</strong></span>
+                        <span style="color: ${color}">${paidCount}/${totalExpected} mois (${percentage}%)</span>
+                    </div>
+                `;
+                
+                // Détails : liste des mois payés et impayés
+                const paidMonthsList = Array.from(paidMonths);
+                const unpaidMonths = months.filter(m => !paidMonthsList.includes(m));
+                
+                htmlDetails += `
+                    <div class="fee-type-card" style="margin-bottom: 15px; border-left: 3px solid ${color}; padding-left: 10px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <strong><i class="fas fa-receipt"></i> ${feeType}</strong>
+                            <span style="color: ${color}">${paidCount}/${totalExpected} mois (${percentage}%)</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 10px;">
+                            <div style="background: #f0f0f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="background: ${color}; width: ${percentage}%; height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 5px; margin-top: 10px;">
+                            ${months.map(month => {
+                                const isPaid = paidMonthsList.includes(month);
+                                return `
+                                    <div style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                        <i class="fas ${isPaid ? 'fa-check-circle text-success' : 'fa-circle text-muted'}" 
+                                           style="color: ${isPaid ? '#27ae60' : '#ccc'}; font-size: 12px;"></i>
+                                        <span style="${isPaid ? 'color: #27ae60;' : 'color: #999;'}">
+                                            ${month.charAt(0).toUpperCase() + month.slice(1)}
+                                        </span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        
+                        ${unpaidMonths.length > 0 ? `
+                            <div style="margin-top: 10px;">
+                                <button class="btn btn-primary btn-sm" onclick="processPaymentForStudent('${studentMatricule}', '${studentType}', '${studentData.fullName}', '${studentData.class}')">
+                                    <i class="fas fa-credit-card"></i> Payer les mois restants
+                                </button>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+        }
+        
+        // Calculer le taux de paiement global
+        const globalRate = totalMonthsExpected > 0 ? (totalMonthsPaid / totalMonthsExpected * 100).toFixed(1) : 0;
+        const globalColor = globalRate >= 90 ? '#27ae60' : globalRate >= 70 ? '#f39c12' : '#e74c3c';
+        
+        // Barre de progression globale
+        const progressHTML = `
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span><strong>Taux de paiement global</strong></span>
+                    <span style="color: ${globalColor}">${globalRate}%</span>
+                </div>
+                <div style="background: #f0f0f0; height: 10px; border-radius: 5px; overflow: hidden;">
+                    <div style="background: ${globalColor}; width: ${globalRate}%; height: 100%;"></div>
+                </div>
+            </div>
+        `;
+        
+        summaryEl.innerHTML = htmlSummary;
+        detailsEl.innerHTML = htmlDetails;
+        progressEl.innerHTML = progressHTML;
+        
+        // Afficher le conteneur
+        container.classList.remove('hidden');
+        
+        // Ajouter un badge pour les mois payés dans le formulaire de paiement
+        await updateMonthCheckboxesWithStatus(studentMatricule, studentType);
+        
+    } catch (error) {
+        console.error('Erreur affichage statut paiement:', error);
+        container.classList.add('hidden');
+    }
+}
+
+/**
+ * Met à jour les checkbox des mois avec le statut de paiement
+ */
+async function updateMonthCheckboxesWithStatus(studentMatricule, studentType) {
+    const paymentTypeSelect = document.getElementById('onsite-payment-type');
+    const paymentType = paymentTypeSelect?.value;
+    
+    if (paymentType === 'Autres') {
+        await generateMonthCheckboxes(studentMatricule, studentType, null);
+    } else if (paymentType && paymentType !== '') {
+        await generateMonthCheckboxes(studentMatricule, studentType, paymentType);
+    } else {
+        await generateMonthCheckboxes(studentMatricule, studentType, null);
+    }
+}
+
+/**
+ * Bascule l'affichage des détails du statut de paiement
+ */
+function togglePaymentStatusDetails() {
+    const detailsEl = document.getElementById('payment-details');
+    if (detailsEl) {
+        paymentDetailsVisible = !paymentDetailsVisible;
+        detailsEl.style.display = paymentDetailsVisible ? 'block' : 'none';
+        
+        const toggleBtn = document.querySelector('#payment-status-container button');
+        if (toggleBtn) {
+            toggleBtn.innerHTML = paymentDetailsVisible ? 
+                '<i class="fas fa-chevron-up"></i> Masquer' : 
+                '<i class="fas fa-chevron-down"></i> Détails';
+        }
+    }
+}
+
+/**
+ * Récupère les types de frais par défaut
+ */
+function getDefaultFeeTypes() {
+    // Récupérer les types existants
+    if (window.feeTypesList && window.feeTypesList.length > 0) {
+        return window.feeTypesList
+            .filter(ft => ft.name !== 'Frais d\'inscription' && ft.name !== 'Frais de réintégration')
+            .map(ft => ft.name);
+    }
+    return ['Frais scolaires', 'Frais de transport', 'Frais de cantine'];
+}
+
+// Modifier le gestionnaire de recherche d'élève pour afficher le statut
+const originalStudentSearch = document.getElementById('onsite-student-id')?.addEventListener('blur', async (e) => {
+    const matricule = e.target.value.trim();
+    if (!matricule) {
+        document.getElementById('payment-status-container')?.classList.add('hidden');
+        return;
+    }
+    
+    const studentType = document.getElementById('onsite-student-type')?.value;
+    
+    if (studentType) {
+        await displayStudentPaymentStatus(matricule, studentType);
+    }
+});
+
+// Ajouter un écouteur pour la touche Entrée
+document.getElementById('onsite-student-id')?.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+        const matricule = e.target.value.trim();
+        if (matricule) {
+            const studentType = document.getElementById('onsite-student-type')?.value;
+            if (studentType) {
+                await displayStudentPaymentStatus(matricule, studentType);
+            }
+        }
+    }
+});
+
+/**
+ * Traite le paiement des frais d'inscription depuis le statut
+ */
+window.processInscriptionPayment = async function(matricule, studentType, studentName, studentClass, amount) {
+    try {
+        const studentData = await getStudentCurrentData(matricule, studentType);
+        const schoolYear = studentData?.schoolYear || getCurrentSchoolYear();
+        
+        const paymentData = {
+            studentId: matricule,
+            studentName: studentName,
+            studentClass: studentClass,
+            studentType: studentType,
+            month: 'inscription',
+            paymentType: 'Frais d\'inscription',
+            amount: amount,
+            validatedBy: currentSecretary?.uid || 'unknown',
+            validatedAt: new Date().toISOString(),
+            createdAt: new Date().toISOString(),
+            paymentMethod: 'onsite',
+            schoolYear: schoolYear
+        };
+        
+        if (isOnline) {
+            await addDoc(collection(db, 'payments'), paymentData);
+        } else {
+            await addToOfflineQueue('add', 'payments', paymentData);
+            await cacheData('payments', { ...paymentData, _temp: true });
+        }
+        
+        await generateReceipt(studentName, ['Inscription'], amount, 'INS-' + generatePaymentCode(), studentClass, 'Frais d\'inscription');
+        
+        showAlert(`✅ Frais d'inscription payés pour ${studentName}`, 'success');
+        
+        // Recharger le statut
+        await displayStudentPaymentStatus(matricule, studentType);
+        await loadDashboardStats();
+        
+    } catch (error) {
+        console.error('Erreur paiement inscription:', error);
+        showAlert('Erreur: ' + error.message, 'error');
+    }
+};
+
+/**
+ * Récupère l'année scolaire en cours
+ */
+function getCurrentSchoolYear() {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+    return currentMonth >= 9 ? `${currentYear}-${currentYear + 1}` : `${currentYear - 1}-${currentYear}`;
+}
+
 </script>
 
 
 
 </body>
 </html>  
- 
